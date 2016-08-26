@@ -6,7 +6,7 @@ import com.epam.mentoring.multithreading.currency.model.RatePk;
 /**
  * Created by Endeg on 26.08.2016.
  */
-public class RateDao extends AbstractGsonReadOnlyDao<Rate, RatePk> {
+public class RateDao extends AbstractGsonDao<Rate, RatePk> {
     protected Class<Rate> getEntityClass() {
         return Rate.class;
     }
