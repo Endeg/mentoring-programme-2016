@@ -34,7 +34,7 @@ public class CurrencyServiceImpl implements CurrencyService {
             currencyDao.save(id, entity);
         } catch (DaoException e) {
             LOGGER.error("Problem saving currency of " + id, e);
-            throw new ServiceException("Currency not found", e, ServiceExceptionCode.PROBLEM_SAVING_CURRENCY);
+            throw new ServiceException("Cannot save currency", e, ServiceExceptionCode.PROBLEM_SAVING_CURRENCY);
         }
     }
 }
