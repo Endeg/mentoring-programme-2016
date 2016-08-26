@@ -1,5 +1,6 @@
 package com.epam.mentoring.multithreading.currency.util;
 
+import com.epam.mentoring.multithreading.currency.exception.ServiceException;
 import com.epam.mentoring.multithreading.currency.model.Account;
 import com.epam.mentoring.multithreading.currency.service.AccountService;
 import com.epam.mentoring.multithreading.currency.service.impl.AccountServiceImpl;
@@ -13,7 +14,7 @@ import java.util.Random;
  * Created by Endeg on 26.08.2016.
  */
 public class AccountGenerator {
-    public static List<String> genAccounts() {
+    public static List<String> genAccounts() throws ServiceException {
         final List<String> CURRENCTIES = Arrays.asList("RUB", "USD", "EUR");
 
         final Random rnd = new Random();

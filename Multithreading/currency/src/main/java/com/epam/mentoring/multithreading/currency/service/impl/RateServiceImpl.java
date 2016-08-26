@@ -2,6 +2,7 @@ package com.epam.mentoring.multithreading.currency.service.impl;
 
 import com.epam.mentoring.multithreading.currency.dao.RateDao;
 import com.epam.mentoring.multithreading.currency.exception.DaoException;
+import com.epam.mentoring.multithreading.currency.exception.ServiceException;
 import com.epam.mentoring.multithreading.currency.model.Rate;
 import com.epam.mentoring.multithreading.currency.model.RatePk;
 import com.epam.mentoring.multithreading.currency.service.RateService;
@@ -18,7 +19,7 @@ public class RateServiceImpl implements RateService {
     private final RateDao rateDao = new RateDao();
 
     @Override
-    public Rate get(RatePk id) {
+    public Rate get(RatePk id) throws ServiceException {
         try {
             return rateDao.get(id);
         } catch (DaoException e) {
@@ -28,7 +29,7 @@ public class RateServiceImpl implements RateService {
     }
 
     @Override
-    public void save(RatePk id, Rate entity) {
+    public void save(RatePk id, Rate entity) throws ServiceException {
         try {
             rateDao.save(id, entity);
         } catch (DaoException e) {

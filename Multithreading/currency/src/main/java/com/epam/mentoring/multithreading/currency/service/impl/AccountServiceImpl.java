@@ -2,6 +2,7 @@ package com.epam.mentoring.multithreading.currency.service.impl;
 
 import com.epam.mentoring.multithreading.currency.dao.AccountDao;
 import com.epam.mentoring.multithreading.currency.exception.DaoException;
+import com.epam.mentoring.multithreading.currency.exception.ServiceException;
 import com.epam.mentoring.multithreading.currency.model.Account;
 import com.epam.mentoring.multithreading.currency.service.AccountService;
 import org.slf4j.Logger;
@@ -17,7 +18,7 @@ public class AccountServiceImpl implements AccountService {
     private final AccountDao accountDao = new AccountDao();
 
     @Override
-    public Account get(String id) {
+    public Account get(String id) throws ServiceException {
         try {
             return accountDao.get(id);
         } catch (DaoException e) {
@@ -27,7 +28,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void save(String id, Account entity) {
+    public void save(String id, Account entity) throws ServiceException {
         try {
             accountDao.save(id, entity);
         } catch (DaoException e) {
