@@ -30,4 +30,7 @@ public abstract class SortFramework<E extends Comparable<E>> {
 
     protected abstract ImmutableList<E> sort();
 
+    public long getElapsed() {
+        return elapsed;
+    }
 }
