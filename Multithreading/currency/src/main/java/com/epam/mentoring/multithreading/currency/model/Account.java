@@ -25,4 +25,12 @@ public class Account {
     public void setCurrencies(List<String> currencies) {
         this.currencies = currencies;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "name='" + name + '\'' +
+                ", currencies=" + currencies +
+                '}';
+    }
 }
