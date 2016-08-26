@@ -2,29 +2,17 @@ package com.epam.mentoring.multithreading.sort;
 
 import com.google.common.collect.ImmutableList;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 /**
  * Created by Endeg on 26.08.2016.
  */
-public class SingleThreadedQuickSortRunner {
+public class SingleThreadedQuickSortRunner extends SortFramework<Integer> {
+
+    private SingleThreadedQuickSortRunner() {
+        super(SortUtils.genIntegers(10000));
+    }
 
     public static void main(String[] args) {
-        final Random rnd = new Random();
-        List<Integer> raw = new ArrayList<>();
-        for (int i = 0; i < 1000; i++) {
-            raw.add(rnd.nextInt());
-        }
-
-        final ImmutableList<Integer> unsorted = ImmutableList.copyOf(raw);
-
-        final ImmutableList<Integer> sorted = qsort(unsorted);
-
-        for (Integer elem : sorted) {
-            System.out.println(elem);
-        }
+        new SingleThreadedQuickSortRunner().run();
     }
 
     private static ImmutableList<Integer> qsort(ImmutableList<Integer> unsorted) {
@@ -44,5 +32,10 @@ public class SingleThreadedQuickSortRunner {
                 add(x).
                 addAll(qsort(SortUtils.filterMaxElements(xs, x))).
                 build();
+    }
+
+    @Override
+    protected ImmutableList<Integer> sort() {
+        return qsort(unsorted);
     }
 }
