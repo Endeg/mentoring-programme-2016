@@ -1,5 +1,6 @@
 package com.epam.mentoring.multithreading.currency.dao;
 
+import com.epam.mentoring.multithreading.currency.exception.DaoException;
 import com.epam.mentoring.multithreading.currency.model.Rate;
 import com.epam.mentoring.multithreading.currency.model.RatePk;
 import org.hamcrest.core.IsNull;
@@ -18,7 +19,7 @@ public class RateDaoTest {
     private final RateDao rateDao = new RateDao();
 
     @Test
-    public void shouldReadFromCorrectFile() {
+    public void shouldReadFromCorrectFile() throws DaoException {
         //GIVEN
 
         //WHEN
@@ -31,4 +32,13 @@ public class RateDaoTest {
         assertThat(rate.getValue(), is(new BigDecimal("0.24")));
     }
 
+    @Test(expected = DaoException.class)
+    public void shouldThrowExceptionWhenRateNotExists() throws DaoException {
+        //GIVEN
+        //WHEN
+        rateDao.get(new RatePk("RUB_111", "EUR_111"));
+
+        //THEN
+        //Expecting exception
+    }
 }

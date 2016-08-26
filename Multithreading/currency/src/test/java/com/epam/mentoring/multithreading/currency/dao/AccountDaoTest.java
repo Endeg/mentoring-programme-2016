@@ -1,5 +1,6 @@
 package com.epam.mentoring.multithreading.currency.dao;
 
+import com.epam.mentoring.multithreading.currency.exception.DaoException;
 import com.epam.mentoring.multithreading.currency.model.Account;
 import org.hamcrest.core.IsNull;
 import org.junit.Test;
@@ -17,7 +18,7 @@ public class AccountDaoTest {
     private final AccountDao accountDao = new AccountDao();
 
     @Test
-    public void shouldReadCorrectFile() {
+    public void shouldReadCorrectFile() throws DaoException {
         //GIVEN
         //WHEN
         final Account john = accountDao.get("JOHN");
@@ -28,4 +29,14 @@ public class AccountDaoTest {
         assertThat(john.getCurrencies(), is(Arrays.asList("RUB", "USD", "EUR")));
     }
 
+
+    @Test(expected = DaoException.class)
+    public void shouldThrowExceptionWhenAccountNotExists() throws DaoException {
+        //GIVEN
+        //WHEN
+        accountDao.get("THOMAS_111");
+
+        //THEN
+        //Expecting exception
+    }
 }
