@@ -34,6 +34,7 @@ public class AccountServiceImpl implements AccountService {
             accountDao.save(id, entity);
         } catch (DaoException e) {
             LOGGER.error("Problem saving account of " + id, e);
+            throw new ServiceException("Account '" + id + "' cannot be saved", e, ServiceExceptionCode.PROBLEM_SAVING_ACCOUNT);
         }
     }
 }

@@ -3,6 +3,7 @@ package com.epam.mentoring.multithreading.currency.service.impl;
 import com.epam.mentoring.multithreading.currency.dao.CurrencyDao;
 import com.epam.mentoring.multithreading.currency.exception.DaoException;
 import com.epam.mentoring.multithreading.currency.exception.ServiceException;
+import com.epam.mentoring.multithreading.currency.exception.ServiceExceptionCode;
 import com.epam.mentoring.multithreading.currency.model.Currency;
 import com.epam.mentoring.multithreading.currency.service.CurrencyService;
 import org.slf4j.Logger;
@@ -23,7 +24,7 @@ public class CurrencyServiceImpl implements CurrencyService {
             return currencyDao.get(id);
         } catch (DaoException e) {
             LOGGER.error("Problem getting currency of " + id, e);
-            return null;
+            throw new ServiceException("Currency not found", e, ServiceExceptionCode.CURRENCY_NOT_FOUND);
         }
     }
 
@@ -33,6 +34,7 @@ public class CurrencyServiceImpl implements CurrencyService {
             currencyDao.save(id, entity);
         } catch (DaoException e) {
             LOGGER.error("Problem saving currency of " + id, e);
+            throw new ServiceException("Currency not found", e, ServiceExceptionCode.PROBLEM_SAVING_CURRENCY);
         }
     }
 }

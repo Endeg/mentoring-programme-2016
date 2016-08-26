@@ -1,5 +1,7 @@
 package com.epam.mentoring.multithreading.currency.service;
 
+import com.epam.mentoring.multithreading.currency.exception.ServiceException;
+
 import java.math.BigDecimal;
 
 /**
@@ -7,6 +9,7 @@ import java.math.BigDecimal;
  */
 public interface ExchangeService {
 
-    BigDecimal exchange(String accountId, BigDecimal sourceAmount, String sourceCurrencyId, String destCurrencyId);
+    BigDecimal exchange(String accountId, BigDecimal sourceAmount, String sourceCurrencyId, String destCurrencyId)
+            throws ServiceException;
 
 }

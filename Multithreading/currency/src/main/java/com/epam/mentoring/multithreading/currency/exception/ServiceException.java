@@ -17,6 +17,11 @@ public class ServiceException extends Exception {
         this.code = code;
     }
 
+    public ServiceException(String message, ServiceExceptionCode code) {
+        super(message);
+        this.code = code;
+    }
+
     @Override
     public String getMessage() {
         return code + ": " + super.getMessage();
