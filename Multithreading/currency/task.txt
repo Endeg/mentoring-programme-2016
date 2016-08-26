@@ -1,38 +1,10 @@
-Using suggested class 'Car' create app, which will launch race for several different cars.
-
-1. Create cars with different parameters. Start cars simultaneously and parallel. Observe which finishes first.
-
-2. When the race is over - output the winner message 'Winner is XXXXX!'.
-
-3. Disqualify one of cars from the race after 5 seconds by interrupting it's thread - car code needs to be modified for that.
-
-public class Car implements Runnable {
-
-        private static final long MAX_DISTANCE = 10000;
-
-        Logger log = Logger.getLogger(getClass());
-
-        private long friction;
-        private long distance;
-
-        private String name;
-
-        public Car(String name, long friction) {
-            this.name = name;
-            this.friction = 100;
-        }
-
-        @Override
-        public void run() {
-            try {
-                while (distance < MAX_DISTANCE) {
-                    Thread.sleep(friction);
-                    distance += 100;
-                    log.info(name + " " + distance);
-                }
-            } catch (InterruptedException e) {
-                log.error(e);
-            }
-        }
-
-    }
+1. Make an application that contains business logic for making exchange operations between different currencies.
+2. Create models for dealing with currencies, user accounts and exchange rates. One account can have multiple currency values. Use BigDecimal for performing of exchange calculations.
+3. Data with user accounts should be stored as files (one file per account).
+4. Separate application functionality to DAO, service and utilities. 
+5. Create module which will provide high-level operations (manage accounts, currencies, exchange rates).
+6. Create sample accounts and currencies. Define sample exchange rates.
+7. Provide concurrent data access to user accounts. Simulate simultaneous currency exchanges for single account by multiple threads and ensure that all the operations are thread-safe. 
+8. Use Executor Service to manage threads.
+9. Make custom exceptions to let user to know the reason of error. Don't handle runtime exceptions. Validate inputs such an account existence, sufficiency of currency amount, etc.
+10. Log information about what is happening on different application levels and about conversion results. Use Logger for that.
