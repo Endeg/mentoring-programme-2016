@@ -3,6 +3,8 @@ package com.epam.mentoring.multithreading.currency.dao;
 import com.epam.mentoring.multithreading.currency.exception.DaoException;
 import com.google.gson.Gson;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,13 +24,16 @@ public abstract class AbstractGsonDao<E, PK> implements ReadOnlyDao<E, PK>, Writ
         final String filePath = id + ".json";
         final String storagePath = Paths.get(STORAGE_PATH, filePath).normalize().toString();
 
-        InputStream jsonStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(storagePath);
-        if (jsonStream == null) {
-            jsonStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(filePath);
-        }
-        if (jsonStream != null) {
-            return gson.fromJson(new InputStreamReader(jsonStream), getEntityClass());
-        } else {
+        try (final FileReader fileReader = new FileReader(storagePath)) {
+            return gson.fromJson(fileReader, getEntityClass());
+        } catch (FileNotFoundException e) {
+            InputStream jsonStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(filePath);
+            if (jsonStream != null) {
+                return gson.fromJson(new InputStreamReader(jsonStream), getEntityClass());
+            } else {
+                throw new DaoException("Entity of " + getEntityClass() + " with id " + id + " was not found");
+            }
+        } catch (IOException e) {
             throw new DaoException("Entity of " + getEntityClass() + " with id " + id + " was not found");
         }
     }
