@@ -6,18 +6,15 @@ import com.epam.mentoring.multithreading.currency.service.AccountService;
 import com.epam.mentoring.multithreading.currency.service.ExchangeService;
 import com.epam.mentoring.multithreading.currency.service.impl.AccountServiceImpl;
 import com.epam.mentoring.multithreading.currency.service.impl.ExchangeServiceImpl;
-import com.epam.mentoring.multithreading.currency.util.AccountGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -27,31 +24,18 @@ public class CurrencyRunner {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CurrencyRunner.class);
 
-    public static void main(String[] args) throws ServiceException, InterruptedException {
-        final List<String> accountIds = AccountGenerator.genAccounts();
-        final ExecutorService executorService = Executors.newSingleThreadExecutor();
+    public static void main(String[] args) throws ServiceException, InterruptedException, ExecutionException {
+        final ExecutorService executorService = Executors.newCachedThreadPool();
 
-        renameAccounts(accountIds, executorService);
-
-        final Random rnd = new Random();
+        //final List<String> accountIds = AccountGenerator.genAccounts();
+        //renameAccounts(accountIds, executorService);
 
         final ExchangeService exchangeService = new ExchangeServiceImpl();
 
-        final List<Future<BigDecimal>> results = new ArrayList<>();
-
         for (int i = 0; i < 1000; i++) {
-            final Future<BigDecimal> future = executorService.submit(new Callable<BigDecimal>() {
-                @Override
-                public BigDecimal call() throws Exception {
-                    try {
-                        return exchangeService.exchange("JOHN", BigDecimal.valueOf(Math.abs(rnd.nextDouble())), "EUR", "RUB");
-                    } catch (ServiceException e) {
-                        LOGGER.error("Problem with exchange", e);
-                        throw e;
-                    }
-                }
-            });
-            results.add(future);
+            submitExchangeTask(executorService, exchangeService, "RUB");
+            submitExchangeTask(executorService, exchangeService, "EUR");
+            submitExchangeTask(executorService, exchangeService, "USD");
         }
 
         executorService.shutdown();
@@ -63,6 +47,23 @@ public class CurrencyRunner {
                 executorService.shutdownNow();
             }
         }
+    }
+
+    private static void submitExchangeTask(ExecutorService executorService,
+                                           final ExchangeService exchangeService,
+                                           final String destCurrencyId) {
+        final Random rnd = new Random();
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    final BigDecimal exchange = exchangeService.exchange("JOHN", BigDecimal.valueOf(Math.abs(rnd.nextDouble()) * 100), "RUB", destCurrencyId);
+                    LOGGER.info("Exchange result = {}", exchange);
+                } catch (ServiceException e) {
+                    LOGGER.error("Problem with exchange", e);
+                }
+            }
+        });
     }
 
     private static void renameAccounts(List<String> accountIds, ExecutorService executorService) {

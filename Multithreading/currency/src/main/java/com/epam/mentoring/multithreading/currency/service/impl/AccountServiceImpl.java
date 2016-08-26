@@ -14,6 +14,8 @@ import org.slf4j.LoggerFactory;
  */
 public class AccountServiceImpl implements AccountService {
 
+    private static final Object o = new java.lang.Object();
+
     private static final Logger LOGGER = LoggerFactory.getLogger(AccountServiceImpl.class);
 
     private final AccountDao accountDao = new AccountDao();
@@ -21,7 +23,9 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account get(String id) throws ServiceException {
         try {
-            return accountDao.get(id);
+            synchronized (o) {
+                return accountDao.get(id);
+            }
         } catch (DaoException e) {
             LOGGER.error("Problem getting account of " + id, e);
             throw new ServiceException("Account '" + id + "' not found", e, ServiceExceptionCode.ACCOUNT_NOT_FOUND);
@@ -31,7 +35,9 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public void save(String id, Account entity) throws ServiceException {
         try {
-            accountDao.save(id, entity);
+            synchronized (o) {
+                accountDao.save(id, entity);
+            }
         } catch (DaoException e) {
             LOGGER.error("Problem saving account of " + id, e);
             throw new ServiceException("Account '" + id + "' cannot be saved", e, ServiceExceptionCode.PROBLEM_SAVING_ACCOUNT);

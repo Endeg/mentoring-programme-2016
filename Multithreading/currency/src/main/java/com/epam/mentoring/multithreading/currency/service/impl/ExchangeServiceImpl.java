@@ -29,7 +29,8 @@ public class ExchangeServiceImpl implements ExchangeService {
     @Override
     public BigDecimal exchange(String accountId, BigDecimal sourceAmount, String sourceCurrencyId, String destCurrencyId)
             throws ServiceException {
-        LOGGER.info("Starting exchange");
+        LOGGER.info("Starting exchange (accountId = {}, sourceAmount = {}, sourceCurrencyId = {}, destCurrencyId = {})",
+                accountId, sourceAmount, sourceCurrencyId, destCurrencyId);
         final Account account = accountService.get(accountId);
         if (!account.getCurrencies().contains(sourceCurrencyId)) {
             throw new ServiceException("Source currency '" + sourceCurrencyId + "' was not found",
@@ -51,7 +52,8 @@ public class ExchangeServiceImpl implements ExchangeService {
 
         final BigDecimal converted = sourceAmount.multiply(rate.getValue());
         LOGGER.info("Converted result is {}", converted);
-        LOGGER.info("Starting completed");
+        LOGGER.info("Exchange completed (accountId = {}, sourceAmount = {}, sourceCurrencyId = {}, destCurrencyId = {})",
+                accountId, sourceAmount, sourceCurrencyId, destCurrencyId);
         return converted;
     }
 }

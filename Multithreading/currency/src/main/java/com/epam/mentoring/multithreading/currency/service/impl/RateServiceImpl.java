@@ -15,6 +15,8 @@ import org.slf4j.LoggerFactory;
  */
 public class RateServiceImpl implements RateService {
 
+    private static final Object o = new java.lang.Object();
+
     private static final Logger LOGGER = LoggerFactory.getLogger(RateServiceImpl.class);
 
     private final RateDao rateDao = new RateDao();
@@ -22,7 +24,9 @@ public class RateServiceImpl implements RateService {
     @Override
     public Rate get(RatePk id) throws ServiceException {
         try {
-            return rateDao.get(id);
+            synchronized (o) {
+                return rateDao.get(id);
+            }
         } catch (DaoException e) {
             LOGGER.error("Problem getting rate of " + id, e);
             throw new ServiceException("Rate '" + id + "' not found", e, ServiceExceptionCode.RATE_NOT_FOUND);
@@ -32,7 +36,9 @@ public class RateServiceImpl implements RateService {
     @Override
     public void save(RatePk id, Rate entity) throws ServiceException {
         try {
-            rateDao.save(id, entity);
+            synchronized (o) {
+                rateDao.save(id, entity);
+            }
         } catch (DaoException e) {
             LOGGER.error("Problem saving rate of " + id, e);
             throw new ServiceException("Rate '" + id + "' cannot be saved", e, ServiceExceptionCode.PROBLEM_SAVING_RATE);
