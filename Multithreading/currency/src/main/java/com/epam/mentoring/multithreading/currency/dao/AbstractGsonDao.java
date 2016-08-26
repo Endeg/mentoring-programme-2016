@@ -1,6 +1,7 @@
 package com.epam.mentoring.multithreading.currency.dao;
 
 import com.epam.mentoring.multithreading.currency.exception.DaoException;
+import com.epam.mentoring.multithreading.currency.util.StorageUtil;
 import com.google.gson.Gson;
 
 import java.io.FileNotFoundException;
@@ -9,20 +10,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.file.Paths;
 
 /**
  * Created by Endeg on 26.08.2016.
  */
 public abstract class AbstractGsonDao<E, PK> implements ReadOnlyDao<E, PK>, WriteOnlyDao<E, PK> {
 
-    public static final String STORAGE_PATH = Paths.get(".").toAbsolutePath().normalize().toString();
-
     public E get(PK id) throws DaoException {
         final Gson gson = new Gson();
 
         final String filePath = id + ".json";
-        final String storagePath = Paths.get(STORAGE_PATH, filePath).normalize().toString();
+        final String storagePath = StorageUtil.getPathInStorage(filePath);
 
         try (final FileReader fileReader = new FileReader(storagePath)) {
             return gson.fromJson(fileReader, getEntityClass());
@@ -42,8 +40,7 @@ public abstract class AbstractGsonDao<E, PK> implements ReadOnlyDao<E, PK>, Writ
         final Gson gson = new Gson();
 
         final String filePath = id + ".json";
-        final String storagePath = Paths.get(STORAGE_PATH, filePath).normalize().toString();
-
+        final String storagePath = StorageUtil.getPathInStorage(filePath);
 
         final String json = gson.toJson(entity);
 
