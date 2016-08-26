@@ -8,18 +8,26 @@ import com.google.common.collect.ImmutableList;
 public abstract class SortFramework<E extends Comparable<E>> {
 
     protected final ImmutableList<E> unsorted;
+    private final boolean doOutput;
     private ImmutableList<E> sorted;
     private long elapsed;
 
-    protected SortFramework(ImmutableList<E> unsorted) {
+    public SortFramework(ImmutableList<E> unsorted) {
+        this(unsorted, false);
+    }
+
+    protected SortFramework(ImmutableList<E> unsorted, boolean doOutput) {
         this.unsorted = unsorted;
+        this.doOutput = doOutput;
     }
 
     public void run() {
         final long start = System.currentTimeMillis();
         sorted = sort();
         elapsed = System.currentTimeMillis() - start;
-        output();
+        if (doOutput) {
+            output();
+        }
     }
 
     private void output() {

@@ -7,12 +7,12 @@ import com.google.common.collect.ImmutableList;
  */
 public class SingleThreadedQuickSortRunner extends SortFramework<Integer> {
 
-    public SingleThreadedQuickSortRunner(int count) {
-        super(SortUtils.genIntegers(count));
+    public SingleThreadedQuickSortRunner(ImmutableList<Integer> unsorted, boolean doOutput) {
+        super(unsorted, doOutput);
     }
 
     public static void main(String[] args) {
-        new SingleThreadedQuickSortRunner(10000).run();
+        new SingleThreadedQuickSortRunner(SortUtils.genIntegers(10000), true).run();
     }
 
     private static ImmutableList<Integer> qsort(ImmutableList<Integer> unsorted) {
