@@ -17,7 +17,7 @@ public class RunRace {
                 new Thread(new Car("Luigi", 120), "Luigi"),
                 new Thread(new Car("Peach", 120), "Peach"),
                 new Thread(new Car("Toad", 140), "Toad"),
-                new Thread(new Car("Bowser", 160), "Bowser")};
+                new Thread(new Car(Car.TROUBLE_MAKER_NAME, 160), Car.TROUBLE_MAKER_NAME)};
 
 
         final List<String> places = new ArrayList<>();
