@@ -1,8 +1,6 @@
 package com.epam.mentoring.multithreading.sort;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +9,11 @@ import java.util.Random;
 /**
  * Created by Endeg on 26.08.2016.
  */
-public class QuickSortRunner {
+public class SingleThreadedQuickSortRunner {
 
     public static void main(String[] args) {
         final Random rnd = new Random();
-        List<Integer> raw = new ArrayList<Integer>();
+        List<Integer> raw = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {
             raw.add(rnd.nextInt());
         }
@@ -42,29 +40,9 @@ public class QuickSortRunner {
         final ImmutableList<Integer> xs = unsorted.subList(1, unsorted.size() - 1);
 
         return ImmutableList.<Integer>builder().
-                addAll(qsort(filterMinElements(xs, x))).
+                addAll(qsort(SortUtils.filterMinElements(xs, x))).
                 add(x).
-                addAll(qsort(filterMaxElements(xs, x))).
+                addAll(qsort(SortUtils.filterMaxElements(xs, x))).
                 build();
-    }
-
-    private static <E extends Comparable<E>> ImmutableList<E> filterMinElements(ImmutableList<E> xs, final E x) {
-        final Iterable<E> filtered = Iterables.filter(xs, new Predicate<E>() {
-            public boolean apply(E e) {
-                return e.compareTo(x) < 0;
-            }
-        });
-
-        return ImmutableList.copyOf(filtered);
-    }
-
-    private static <E extends Comparable<E>> ImmutableList<E> filterMaxElements(ImmutableList<E> xs, final E x) {
-        final Iterable<E> filtered = Iterables.filter(xs, new Predicate<E>() {
-            public boolean apply(E e) {
-                return e.compareTo(x) >= 0;
-            }
-        });
-
-        return ImmutableList.copyOf(filtered);
     }
 }
