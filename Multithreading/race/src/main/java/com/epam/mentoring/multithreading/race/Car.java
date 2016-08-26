@@ -12,14 +12,12 @@ public class Car implements Runnable {
 
     public static final String TROUBLE_MAKER_NAME = "Bowser";
 
-    private static final long MAX_DISTANCE = 10000;
-
+    public static final long MAX_DISTANCE = 10000;
+    final String name;
     Logger log = Logger.getLogger(getClass());
-
     private long friction;
     private long distance;
-
-    private String name;
+    private boolean disqualified;
 
     public Car(String name, long friction) {
         this.name = name;
@@ -36,6 +34,7 @@ public class Car implements Runnable {
                 long elapsed = System.currentTimeMillis();
                 if (TROUBLE_MAKER_NAME.equals(name) && (elapsed - startTime) >= TimeUnit.SECONDS.toMillis(5)) {
                     log.warn(name + " car was disqualified for troublemaking.");
+                    disqualified = true;
                     break;
                 }
             }
@@ -44,5 +43,11 @@ public class Car implements Runnable {
         }
     }
 
+    public long getDistance() {
+        return distance;
+    }
 
+    public boolean isDisqualified() {
+        return disqualified;
+    }
 }

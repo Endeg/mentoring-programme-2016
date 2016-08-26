@@ -13,35 +13,49 @@ public class RunRace {
     private static final Logger log = Logger.getLogger(RunRace.class);
 
     public static void main(String[] args) throws InterruptedException {
-        Thread[] cars = new Thread[]{new Thread(new Car("Mario", 100), "Mario"),
-                new Thread(new Car("Luigi", 120), "Luigi"),
-                new Thread(new Car("Peach", 120), "Peach"),
-                new Thread(new Car("Toad", 140), "Toad"),
-                new Thread(new Car(Car.TROUBLE_MAKER_NAME, 160), Car.TROUBLE_MAKER_NAME)};
 
+        Car[] cars = new Car[]{new Car("Mario", 100),
+                new Car("Luigi", 120),
+                new Car("Peach", 120),
+                new Car("Toad", 140),
+                new Car(Car.TROUBLE_MAKER_NAME, 160)};
+
+        List<Thread> carThreads = new ArrayList<>();
+        for (Car car : cars) {
+            carThreads.add(new Thread(car, car.name));
+        }
 
         final List<String> places = new ArrayList<>();
 
-        for (Thread car : cars) {
+        for (Thread car : carThreads) {
             car.start();
         }
 
-        while (places.size() < cars.length) {
-            for (Thread car : cars) {
-                final String carName = car.getName();
-                if (car.getState() == Thread.State.TERMINATED && !places.contains(carName)) {
-                    places.add(carName);
-                    log.info(carName + " reached FINISH as #" + places.size() + "!");
+        while (!allThreadsInState(carThreads, Thread.State.TERMINATED)) {
+            for (Car car : cars) {
+                if (car.getDistance() >= Car.MAX_DISTANCE && !places.contains(car.name)) {
+                    places.add(car.name);
+                    log.info(car.name + " reached FINISH as #" + places.size() + "!");
                     break;
                 }
             }
-
         }
 
-        for (Thread car : cars) {
+        for (Thread car : carThreads) {
             car.join();
         }
 
         log.info("And the WINNER IS " + places.get(0) + "!");
+    }
+
+    private static boolean allThreadsInState(List<Thread> threads, Thread.State state) {
+        boolean result = true;
+        for (Thread thread : threads) {
+            if (thread.getState() != state) {
+                result = false;
+                break;
+            }
+        }
+        return result;
     }
 }
