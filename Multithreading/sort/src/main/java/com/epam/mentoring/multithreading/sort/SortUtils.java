@@ -42,6 +42,22 @@ public class SortUtils {
         return builder.build();
     }
 
+    public static ImmutableList<String> genStrings(int count, int maxLength) {
+        final Random rnd = new Random();
+
+        final ImmutableList.Builder<String> builder = ImmutableList.builder();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            sb.setLength(0);
+            for (int j = 0; j < rnd.nextInt(maxLength) + 1; j++) {
+                sb.append((char) rnd.nextInt(127));
+            }
+            builder.add(sb.toString());
+        }
+
+        return builder.build();
+    }
+
     public static <T extends Comparable<T>> ImmutableList<T> qsort(ImmutableList<T> unsorted) {
         if (unsorted.isEmpty()) {
             return unsorted;
