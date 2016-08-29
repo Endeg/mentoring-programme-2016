@@ -42,6 +42,25 @@ public class SortUtils {
         return builder.build();
     }
 
+    public static <T extends Comparable<T>> ImmutableList<T> qsort(ImmutableList<T> unsorted) {
+        if (unsorted.isEmpty()) {
+            return unsorted;
+        }
+
+        if (unsorted.size() == 1) {
+            return unsorted;
+        }
+
+        final T x = unsorted.get(0);
+        final ImmutableList<T> xs = unsorted.subList(1, unsorted.size() - 1);
+
+        return ImmutableList.<T>builder().
+                addAll(qsort(SortUtils.filterMinElements(xs, x))).
+                add(x).
+                addAll(qsort(SortUtils.filterMaxElements(xs, x))).
+                build();
+    }
+
     public static <E> void outputList(ImmutableList<E> sorted) {
         for (E elem : sorted) {
             System.out.println(elem);
