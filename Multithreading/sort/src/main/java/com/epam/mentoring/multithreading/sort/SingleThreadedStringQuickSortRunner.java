@@ -12,7 +12,7 @@ public class SingleThreadedStringQuickSortRunner extends SortFramework<String> {
     }
 
     public static void main(String[] args) {
-        new SingleThreadedStringQuickSortRunner(SortUtils.genStrings(10000, 20), true).run();
+        new SingleThreadedStringQuickSortRunner(SortUtils.genStrings(100000, 20), true).run();
     }
 
     @Override

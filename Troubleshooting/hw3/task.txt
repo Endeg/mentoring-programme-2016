@@ -1,0 +1,4 @@
+
+
+Use FindBugs and CheckStyle to analyse code quality of any project. Provide results of this analysis (screenshots, logs, etc.).
+

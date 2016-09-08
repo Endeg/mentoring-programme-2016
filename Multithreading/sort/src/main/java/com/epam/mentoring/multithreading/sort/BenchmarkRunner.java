@@ -8,16 +8,19 @@ import com.google.common.collect.ImmutableList;
 public class BenchmarkRunner {
 
     public static void main(String[] args) {
-        System.out.println("size\tsingle\tmulti");
-        for (int i = 10; i <= 10_000_000; i *= 10) {
-            final ImmutableList<Integer> unsorted = SortUtils.genIntegers(i);
-            final long single = process(new SingleThreadedQuickSortRunner(unsorted, false));
-            final long multi = process(new MultithreadedQuickSortRunner(unsorted, false));
-            System.out.println(i + "\t" + single + "ms\t" + multi + "ms");
+        for (int j = 0; j < 20; j++) {
+            System.out.println(j + " -------------------------------------------------------------");
+            System.out.println("size\tsingle\tmulti");
+            for (int i = 10; i <= 100_000; i *= 10) {
+                final ImmutableList<String> unsorted = SortUtils.genStrings(i, 20);
+                final long single = process(new SingleThreadedStringQuickSortRunner(unsorted, false));
+                final long multi = process(new MultithreadedStringQuickSortRunner(unsorted, false));
+                System.out.println(i + "\t" + single + "ms\t" + multi + "ms");
+            }
         }
     }
 
-    private static long process(SortFramework<Integer> runner) {
+    private static long process(SortFramework<?> runner) {
         runner.run();
         return runner.getElapsed();
     }

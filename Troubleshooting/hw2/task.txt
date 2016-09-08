@@ -1,0 +1,7 @@
+Choose some random project's app code
+
+Perform manual peer code review, create report document
+
+Perform static code review using findbugs and checkstyle tools (maven/Jenkins/SonarQube/eclipse)
+
+Compare results of peer review and tool reviews
