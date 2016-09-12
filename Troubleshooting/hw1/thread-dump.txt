@@ -1,0 +1,15 @@
+"Thread-1@421" prio=5 tid=0xc nid=NA waiting for monitor entry
+  java.lang.Thread.State: BLOCKED
+	 blocks Thread-0@420
+	 waiting for Thread-0@420 to release lock on <0x1ac> (a java.lang.String)
+	  at com.epam.mentoring.troubleshooting.hw1.RunDeadlock$ResLocker.run(RunDeadlock.java:29)
+	  - locked <0x1ad> (a java.lang.String)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"Thread-0@420" prio=5 tid=0xb nid=NA waiting for monitor entry
+  java.lang.Thread.State: BLOCKED
+	 blocks Thread-1@421
+	 waiting for Thread-1@421 to release lock on <0x1ad> (a java.lang.String)
+	  at com.epam.mentoring.troubleshooting.hw1.RunDeadlock$ResLocker.run(RunDeadlock.java:29)
+	  - locked <0x1ac> (a java.lang.String)
+	  at java.lang.Thread.run(Thread.java:745)
