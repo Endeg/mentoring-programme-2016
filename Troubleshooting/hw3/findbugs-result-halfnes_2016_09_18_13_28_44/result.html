@@ -1,0 +1,1775 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FindBugs Report</title>
+<style type="text/css">
+		.tablerow0 {
+			background: #EEEEEE;
+		}
+
+		.tablerow1 {
+			background: white;
+		}
+
+		.detailrow0 {
+			background: #EEEEEE;
+		}
+
+		.detailrow1 {
+			background: white;
+		}
+
+		.tableheader {
+			background: #b9b9fe;
+			font-size: larger;
+		}
+		</style>
+</head>
+<body>
+<h1>FindBugs Report</h1>
+<p>Produced using <a href="http://findbugs.sourceforge.net">FindBugs</a>3.0.1.</p>
+<p>Project: 
+			halfnes[halfnes]</p>
+<h2>Metrics</h2>
+<p>11781 lines of code analyzed,
+	in 204 classes, 
+	in 7 packages.</p>
+<table width="500" cellpadding="5" cellspacing="2">
+<tr class="tableheader">
+<th align="left">Metric</th>
+<th align="right">Total</th>
+<th align="right">Density*</th>
+</tr>
+<tr class="tablerow0">
+<td>High Priority Warnings</td>
+<td align="right">6</td>
+<td align="right">0.51</td>
+</tr>
+<tr class="tablerow1">
+<td>Medium Priority Warnings</td>
+<td align="right">80</td>
+<td align="right">6.79</td>
+</tr>
+<tr class="$totalClass">
+<td>
+<b>Total Warnings</b>
+</td>
+<td align="right">
+<b>86</b>
+</td>
+<td align="right">
+<b>7.30</b>
+</td>
+</tr>
+</table>
+<p>
+<i>(* Defects per Thousand lines of non-commenting source statements)</i>
+</p>
+<p>
+<br/>
+<br/>
+</p>
+<h2>Summary</h2>
+<table width="500" cellpadding="5" cellspacing="2">
+<tr class="tableheader">
+<th align="left">Warning Type</th>
+<th align="right">Number</th>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</td>
+<td align="right">7</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+</td>
+<td align="right">2</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_EXPERIMENTAL">Experimental Warnings</a>
+</td>
+<td align="right">4</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+</td>
+<td align="right">8</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_MT_CORRECTNESS">Multithreaded correctness Warnings</a>
+</td>
+<td align="right">12</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+</td>
+<td align="right">5</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_STYLE">Dodgy code Warnings</a>
+</td>
+<td align="right">48</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<b>Total</b>
+</td>
+<td align="right">
+<b>86</b>
+</td>
+</tr>
+</table>
+<p>
+<br/>
+<br/>
+</p>
+<h1>Warnings</h1>
+<p>Click on each warning link to see a full description of the issue, and
+	    details of how to resolve it.</p>
+<h2>
+<a name="Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="2" cellpadding="5">
+<tr class="tableheader">
+<th align="left">Warning</th>
+<th align="left">Priority</th>
+<th align="left">Details</th>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#NM_CLASS_NAMING_CONVENTION">Class names should start with an upper case letter</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>The class name com.grapeshot.halfnes.halfNES doesn't start with an upper case letter<br/>
+<br/>
+<br/>In file halfNES.java,
+					
+						lines 14
+						    to 24<br/>In class com.grapeshot.halfnes.halfNES<br/>At halfNES.java:[lines 14-24]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#NM_CLASS_NAMING_CONVENTION">Class names should start with an upper case letter</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>The class name com.grapeshot.halfnes.utils doesn't start with an upper case letter<br/>
+<br/>
+<br/>In file utils.java,
+					
+						lines 11
+						    to 115<br/>In class com.grapeshot.halfnes.utils<br/>At utils.java:[lines 11-115]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#OS_OPEN_STREAM">Method may fail to close stream</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>com.grapeshot.halfnes.FileUtils.readfromfile(String) may fail to close stream<br/>
+<br/>
+<br/>In file FileUtils.java,
+					
+						line 110<br/>In class com.grapeshot.halfnes.FileUtils<br/>In method com.grapeshot.halfnes.FileUtils.readfromfile(String)<br/>Need to close java.io.InputStream <br/>At FileUtils.java:[line 110]<br/>At FileUtils.java:[line 110]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#OS_OPEN_STREAM">Method may fail to close stream</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>com.grapeshot.halfnes.JInputHelper.isWindows10() may fail to close stream<br/>
+<br/>
+<br/>In file JInputHelper.java,
+					
+						line 110<br/>In class com.grapeshot.halfnes.JInputHelper<br/>In method com.grapeshot.halfnes.JInputHelper.isWindows10()<br/>Need to close java.io.Reader <br/>At JInputHelper.java:[line 110]<br/>At JInputHelper.java:[line 110]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">Method ignores exceptional return value</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Exceptional return value of java.io.File.mkdir() ignored in com.grapeshot.halfnes.JInputHelper.createTempDirectory()<br/>
+<br/>
+<br/>In file JInputHelper.java,
+					
+						line 71<br/>In class com.grapeshot.halfnes.JInputHelper<br/>In method com.grapeshot.halfnes.JInputHelper.createTempDirectory()<br/>Called method java.io.File.mkdir()<br/>At JInputHelper.java:[line 71]<br/>At JInputHelper.java:[line 71]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#SE_BAD_FIELD_STORE">Non-serializable value stored into instance field of a serializable class</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>com.grapeshot.halfnes.video.NTSCRenderer stored into non-transient field SwingUI.renderer<br/>
+<br/>
+<br/>In file SwingUI.java,
+					
+						line 82<br/>In class com.grapeshot.halfnes.ui.SwingUI<br/>Field com.grapeshot.halfnes.ui.SwingUI.renderer<br/>Actual type com.grapeshot.halfnes.video.NTSCRenderer<br/>At SwingUI.java:[line 82]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#SE_BAD_FIELD_STORE">Non-serializable value stored into instance field of a serializable class</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>com.grapeshot.halfnes.video.RGBRenderer stored into non-transient field SwingUI.renderer<br/>
+<br/>
+<br/>In file SwingUI.java,
+					
+						line 85<br/>In class com.grapeshot.halfnes.ui.SwingUI<br/>Field com.grapeshot.halfnes.ui.SwingUI.renderer<br/>Actual type com.grapeshot.halfnes.video.RGBRenderer<br/>At SwingUI.java:[line 85]</p>
+</td>
+</tr>
+</table>
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="Warnings_CORRECTNESS">Correctness Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="2" cellpadding="5">
+<tr class="tableheader">
+<th align="left">Warning</th>
+<th align="left">Priority</th>
+<th align="left">Details</th>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#BSHIFT_WRONG_ADD_PRIORITY">Possible bad parsing of shift operation</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Possible bad parsing of shift operation in com.grapeshot.halfnes.mappers.MMC5Mapper.cartWrite(int, int)<br/>
+<br/>
+<br/>In file MMC5Mapper.java,
+					
+						line 106<br/>In class com.grapeshot.halfnes.mappers.MMC5Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC5Mapper.cartWrite(int, int)<br/>Shifted by 2 bits<br/>At MMC5Mapper.java:[line 106]<br/>At MMC5Mapper.java:[line 106]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#BSHIFT_WRONG_ADD_PRIORITY">Possible bad parsing of shift operation</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Possible bad parsing of shift operation in com.grapeshot.halfnes.mappers.MMC5Mapper.cartWrite(int, int)<br/>
+<br/>
+<br/>In file MMC5Mapper.java,
+					
+						line 106<br/>In class com.grapeshot.halfnes.mappers.MMC5Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC5Mapper.cartWrite(int, int)<br/>Shifted by 4 bits<br/>At MMC5Mapper.java:[line 106]<br/>At MMC5Mapper.java:[line 106]</p>
+</td>
+</tr>
+</table>
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="Warnings_EXPERIMENTAL">Experimental Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="2" cellpadding="5">
+<tr class="tableheader">
+<th align="left">Warning</th>
+<th align="left">Priority</th>
+<th align="left">Details</th>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#OBL_UNSATISFIED_OBLIGATION">Method may fail to clean up stream or resource</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>com.grapeshot.halfnes.FileUtils.readfromfile(String) may fail to clean up java.io.InputStream<br/>
+<br/>
+<br/>In file FileUtils.java,
+					
+						line 110<br/>In class com.grapeshot.halfnes.FileUtils<br/>In method com.grapeshot.halfnes.FileUtils.readfromfile(String)<br/>Reference type java.io.InputStream<br/>1 instances of obligation remaining<br/>Obligation to clean up resource created at FileUtils.java:[line 110] is not discharged<br/>Path continues at FileUtils.java:[line 111]<br/>Path continues at FileUtils.java:[line 116]<br/>Path continues at FileUtils.java:[line 117]<br/>Path continues at FileUtils.java:[line 119]<br/>Path continues at FileUtils.java:[line 120]<br/>Path continues at FileUtils.java:[line 125]<br/>Remaining obligations: {InputStream x 1}</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">Method may fail to clean up stream or resource on checked exception</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>com.grapeshot.halfnes.FileUtils$AsyncWriter.run() may fail to clean up java.io.OutputStream on checked exception<br/>
+<br/>
+<br/>In file FileUtils.java,
+					
+						line 85<br/>In class com.grapeshot.halfnes.FileUtils$AsyncWriter<br/>In method com.grapeshot.halfnes.FileUtils$AsyncWriter.run()<br/>Reference type java.io.OutputStream<br/>1 instances of obligation remaining<br/>Obligation to clean up resource created at FileUtils.java:[line 85] is not discharged<br/>Path continues at FileUtils.java:[line 86]<br/>Path continues at FileUtils.java:[line 87]<br/>Path continues at FileUtils.java:[line 90]<br/>Path continues at FileUtils.java:[line 93]<br/>Path continues at FileUtils.java:[line 94]<br/>Path continues at FileUtils.java:[line 95]<br/>Path continues at FileUtils.java:[line 98]<br/>Remaining obligations: {OutputStream x 1}</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">Method may fail to clean up stream or resource on checked exception</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>com.grapeshot.halfnes.ui.OnScreenMenu.extractRomFromZip(String, String) may fail to clean up java.io.OutputStream on checked exception<br/>
+<br/>
+<br/>In file OnScreenMenu.java,
+					
+						line 141<br/>In class com.grapeshot.halfnes.ui.OnScreenMenu<br/>In method com.grapeshot.halfnes.ui.OnScreenMenu.extractRomFromZip(String, String)<br/>Reference type java.io.OutputStream<br/>1 instances of obligation remaining<br/>Obligation to clean up resource created at OnScreenMenu.java:[line 141] is not discharged<br/>Path continues at OnScreenMenu.java:[line 143]<br/>Path continues at OnScreenMenu.java:[line 146]<br/>Remaining obligations: {OutputStream x 1}</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">Method may fail to clean up stream or resource on checked exception</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>com.grapeshot.halfnes.ui.SwingUI.extractRomFromZip(String, String) may fail to clean up java.io.OutputStream on checked exception<br/>
+<br/>
+<br/>In file SwingUI.java,
+					
+						line 352<br/>In class com.grapeshot.halfnes.ui.SwingUI<br/>In method com.grapeshot.halfnes.ui.SwingUI.extractRomFromZip(String, String)<br/>Reference type java.io.OutputStream<br/>1 instances of obligation remaining<br/>Obligation to clean up resource created at SwingUI.java:[line 352] is not discharged<br/>Path continues at SwingUI.java:[line 354]<br/>Remaining obligations: {OutputStream x 1}</p>
+</td>
+</tr>
+</table>
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="2" cellpadding="5">
+<tr class="tableheader">
+<th align="left">Warning</th>
+<th align="left">Priority</th>
+<th align="left">Details</th>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#EI_EXPOSE_REP2">May expose internal representation by incorporating reference to mutable object</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>com.grapeshot.halfnes.audio.SquareTimer.setduty(int[]) may expose internal representation by storing an externally mutable object into SquareTimer.values<br/>
+<br/>
+<br/>In file SquareTimer.java,
+					
+						line 77<br/>In class com.grapeshot.halfnes.audio.SquareTimer<br/>In method com.grapeshot.halfnes.audio.SquareTimer.setduty(int[])<br/>Field com.grapeshot.halfnes.audio.SquareTimer.values<br/>Local variable named dutyarray<br/>At SquareTimer.java:[line 77]<br/>At SquareTimer.java:[line 77]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#EI_EXPOSE_REP2">May expose internal representation by incorporating reference to mutable object</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>com.grapeshot.halfnes.mappers.MMC5Mapper.setMirroring(int, int[]) may expose internal representation by storing an externally mutable object into MMC5Mapper.nt0<br/>
+<br/>
+<br/>In file MMC5Mapper.java,
+					
+						line 486<br/>In class com.grapeshot.halfnes.mappers.MMC5Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC5Mapper.setMirroring(int, int[])<br/>Field com.grapeshot.halfnes.mappers.MMC5Mapper.nt0<br/>Local variable named exram<br/>At MMC5Mapper.java:[line 486]<br/>At MMC5Mapper.java:[line 486]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#EI_EXPOSE_REP2">May expose internal representation by incorporating reference to mutable object</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>com.grapeshot.halfnes.mappers.MMC5Mapper.setMirroring(int, int[]) may expose internal representation by storing an externally mutable object into MMC5Mapper.nt1<br/>
+<br/>
+<br/>In file MMC5Mapper.java,
+					
+						line 501<br/>In class com.grapeshot.halfnes.mappers.MMC5Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC5Mapper.setMirroring(int, int[])<br/>Field com.grapeshot.halfnes.mappers.MMC5Mapper.nt1<br/>Local variable named exram<br/>At MMC5Mapper.java:[line 501]<br/>At MMC5Mapper.java:[line 501]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#EI_EXPOSE_REP2">May expose internal representation by incorporating reference to mutable object</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>com.grapeshot.halfnes.mappers.MMC5Mapper.setMirroring(int, int[]) may expose internal representation by storing an externally mutable object into MMC5Mapper.nt2<br/>
+<br/>
+<br/>In file MMC5Mapper.java,
+					
+						line 517<br/>In class com.grapeshot.halfnes.mappers.MMC5Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC5Mapper.setMirroring(int, int[])<br/>Field com.grapeshot.halfnes.mappers.MMC5Mapper.nt2<br/>Local variable named exram<br/>At MMC5Mapper.java:[line 517]<br/>At MMC5Mapper.java:[line 517]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#EI_EXPOSE_REP2">May expose internal representation by incorporating reference to mutable object</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>com.grapeshot.halfnes.mappers.MMC5Mapper.setMirroring(int, int[]) may expose internal representation by storing an externally mutable object into MMC5Mapper.nt3<br/>
+<br/>
+<br/>In file MMC5Mapper.java,
+					
+						line 533<br/>In class com.grapeshot.halfnes.mappers.MMC5Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC5Mapper.setMirroring(int, int[])<br/>Field com.grapeshot.halfnes.mappers.MMC5Mapper.nt3<br/>Local variable named exram<br/>At MMC5Mapper.java:[line 533]<br/>At MMC5Mapper.java:[line 533]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#MS_PKGPROTECT">Field should be package protected</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>com.grapeshot.halfnes.mappers.NSFPlayerFont.font should be package protected<br/>
+<br/>
+<br/>In file NSFPlayerFont.java,
+					
+						line 17<br/>In class com.grapeshot.halfnes.mappers.NSFPlayerFont<br/>Field com.grapeshot.halfnes.mappers.NSFPlayerFont.font<br/>At NSFPlayerFont.java:[line 17]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#MS_MUTABLE_ARRAY">Field is a mutable array</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>com.grapeshot.halfnes.video.NesColors.colbytes is a mutable array<br/>
+<br/>
+<br/>In file NesColors.java,
+					
+						line 17<br/>In class com.grapeshot.halfnes.video.NesColors<br/>Field com.grapeshot.halfnes.video.NesColors.colbytes<br/>At NesColors.java:[line 17]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#MS_PKGPROTECT">Field should be package protected</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>com.grapeshot.halfnes.video.NesColors.col should be package protected<br/>
+<br/>
+<br/>In file NesColors.java,
+					
+						line 16<br/>In class com.grapeshot.halfnes.video.NesColors<br/>Field com.grapeshot.halfnes.video.NesColors.col<br/>At NesColors.java:[line 16]</p>
+</td>
+</tr>
+</table>
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="Warnings_MT_CORRECTNESS">Multithreaded correctness Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="2" cellpadding="5">
+<tr class="tableheader">
+<th align="left">Warning</th>
+<th align="left">Priority</th>
+<th align="left">Details</th>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#IS2_INCONSISTENT_SYNC">Inconsistent synchronization</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Inconsistent synchronization of com.grapeshot.halfnes.APU.cyclesperframe; locked 75% of time<br/>
+<br/>
+<br/>In file APU.java,
+					
+						line 496<br/>In class com.grapeshot.halfnes.APU<br/>Field com.grapeshot.halfnes.APU.cyclesperframe<br/>Synchronized 75% of the time<br/>Unsynchronized access at APU.java:[line 496]<br/>Synchronized access at APU.java:[line 113]<br/>Synchronized access at APU.java:[line 121]<br/>Synchronized access at APU.java:[line 128]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#IS2_INCONSISTENT_SYNC">Inconsistent synchronization</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Inconsistent synchronization of com.grapeshot.halfnes.APU.cyclespersample; locked 60% of time<br/>
+<br/>
+<br/>In file APU.java,
+					
+						line 443<br/>In class com.grapeshot.halfnes.APU<br/>Field com.grapeshot.halfnes.APU.cyclespersample<br/>Synchronized 60% of the time<br/>Unsynchronized access at APU.java:[line 443]<br/>Unsynchronized access at APU.java:[line 426]<br/>Synchronized access at APU.java:[line 124]<br/>Synchronized access at APU.java:[line 112]<br/>Synchronized access at APU.java:[line 120]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#IS2_INCONSISTENT_SYNC">Inconsistent synchronization</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Inconsistent synchronization of com.grapeshot.halfnes.APU.dmcperiods; locked 75% of time<br/>
+<br/>
+<br/>In file APU.java,
+					
+						line 319<br/>In class com.grapeshot.halfnes.APU<br/>Field com.grapeshot.halfnes.APU.dmcperiods<br/>Synchronized 75% of the time<br/>Unsynchronized access at APU.java:[line 319]<br/>Synchronized access at APU.java:[line 109]<br/>Synchronized access at APU.java:[line 117]<br/>Synchronized access at APU.java:[line 125]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#IS2_INCONSISTENT_SYNC">Inconsistent synchronization</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Inconsistent synchronization of com.grapeshot.halfnes.APU.framectrreload; locked 50% of time<br/>
+<br/>
+<br/>In file APU.java,
+					
+						line 379<br/>In class com.grapeshot.halfnes.APU<br/>Field com.grapeshot.halfnes.APU.framectrreload<br/>Synchronized 50% of the time<br/>Unsynchronized access at APU.java:[line 379]<br/>Unsynchronized access at APU.java:[line 440]<br/>Unsynchronized access at APU.java:[line 410]<br/>Synchronized access at APU.java:[line 111]<br/>Synchronized access at APU.java:[line 119]<br/>Synchronized access at APU.java:[line 127]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#IS2_INCONSISTENT_SYNC">Inconsistent synchronization</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Inconsistent synchronization of com.grapeshot.halfnes.APU.noiseperiod; locked 75% of time<br/>
+<br/>
+<br/>In file APU.java,
+					
+						line 307<br/>In class com.grapeshot.halfnes.APU<br/>Field com.grapeshot.halfnes.APU.noiseperiod<br/>Synchronized 75% of the time<br/>Unsynchronized access at APU.java:[line 307]<br/>Synchronized access at APU.java:[line 110]<br/>Synchronized access at APU.java:[line 118]<br/>Synchronized access at APU.java:[line 126]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#IS2_INCONSISTENT_SYNC">Inconsistent synchronization</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Inconsistent synchronization of com.grapeshot.halfnes.APU.soundFiltering; locked 50% of time<br/>
+<br/>
+<br/>In file APU.java,
+					
+						line 400<br/>In class com.grapeshot.halfnes.APU<br/>Field com.grapeshot.halfnes.APU.soundFiltering<br/>Synchronized 50% of the time<br/>Unsynchronized access at APU.java:[line 400]<br/>Synchronized access at APU.java:[line 96]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#IS2_INCONSISTENT_SYNC">Inconsistent synchronization</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Inconsistent synchronization of com.grapeshot.halfnes.NES.actionReplay; locked 66% of time<br/>
+<br/>
+<br/>In file NES.java,
+					
+						line 64<br/>In class com.grapeshot.halfnes.NES<br/>Field com.grapeshot.halfnes.NES.actionReplay<br/>Synchronized 66% of the time<br/>Unsynchronized access at NES.java:[line 64]<br/>Synchronized access at NES.java:[line 154]<br/>Synchronized access at NES.java:[line 309]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#IS2_INCONSISTENT_SYNC">Inconsistent synchronization</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Inconsistent synchronization of com.grapeshot.halfnes.NES.cpu; locked 75% of time<br/>
+<br/>
+<br/>In file NES.java,
+					
+						line 200<br/>In class com.grapeshot.halfnes.NES<br/>Field com.grapeshot.halfnes.NES.cpu<br/>Synchronized 75% of the time<br/>Unsynchronized access at NES.java:[line 200]<br/>Unsynchronized access at NES.java:[line 49]<br/>Synchronized access at NES.java:[line 212]<br/>Synchronized access at NES.java:[line 214]<br/>Synchronized access at NES.java:[line 249]<br/>Synchronized access at NES.java:[line 258]<br/>Synchronized access at NES.java:[line 155]<br/>Synchronized access at NES.java:[line 147]<br/>Synchronized access at NES.java:[line 157]<br/>Synchronized access at NES.java:[line 169]<br/>Synchronized access at NES.java:[line 90]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#IS2_INCONSISTENT_SYNC">Inconsistent synchronization</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Inconsistent synchronization of com.grapeshot.halfnes.NES.dontSleep; locked 50% of time<br/>
+<br/>
+<br/>In file NES.java,
+					
+						line 66<br/>In class com.grapeshot.halfnes.NES<br/>Field com.grapeshot.halfnes.NES.dontSleep<br/>Synchronized 50% of the time<br/>Unsynchronized access at NES.java:[line 66]<br/>Synchronized access at NES.java:[line 84]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#IS2_INCONSISTENT_SYNC">Inconsistent synchronization</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Inconsistent synchronization of com.grapeshot.halfnes.NES.mapper; locked 57% of time<br/>
+<br/>
+<br/>In file NES.java,
+					
+						line 180<br/>In class com.grapeshot.halfnes.NES<br/>Field com.grapeshot.halfnes.NES.mapper<br/>Synchronized 57% of the time<br/>Unsynchronized access at NES.java:[line 180]<br/>Unsynchronized access at NES.java:[line 180]<br/>Unsynchronized access at NES.java:[line 180]<br/>Unsynchronized access at NES.java:[line 184]<br/>Unsynchronized access at NES.java:[line 182]<br/>Unsynchronized access at NES.java:[line 241]<br/>Unsynchronized access at NES.java:[line 242]<br/>Synchronized access at NES.java:[line 191]<br/>Synchronized access at NES.java:[line 192]<br/>Synchronized access at NES.java:[line 213]<br/>Synchronized access at NES.java:[line 151]<br/>Synchronized access at NES.java:[line 153]<br/>Synchronized access at NES.java:[line 155]<br/>Synchronized access at NES.java:[line 146]<br/>Synchronized access at NES.java:[line 156]<br/>Synchronized access at NES.java:[line 165]<br/>Synchronized access at NES.java:[line 170]<br/>Synchronized access at NES.java:[line 292]<br/>Synchronized access at NES.java:[line 293]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#IS2_INCONSISTENT_SYNC">Inconsistent synchronization</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Inconsistent synchronization of com.grapeshot.halfnes.NES.ppu; locked 77% of time<br/>
+<br/>
+<br/>In file NES.java,
+					
+						line 72<br/>In class com.grapeshot.halfnes.NES<br/>Field com.grapeshot.halfnes.NES.ppu<br/>Synchronized 77% of the time<br/>Unsynchronized access at NES.java:[line 72]<br/>Synchronized access at NES.java:[line 149]<br/>Synchronized access at NES.java:[line 156]<br/>Synchronized access at NES.java:[line 159]<br/>Synchronized access at NES.java:[line 289]<br/>Synchronized access at NES.java:[line 290]<br/>Synchronized access at NES.java:[line 81]<br/>Synchronized access at NES.java:[line 97]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#IS2_INCONSISTENT_SYNC">Inconsistent synchronization</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Inconsistent synchronization of com.grapeshot.halfnes.ui.SwingUI.inFullScreen; locked 66% of time<br/>
+<br/>
+<br/>In file SwingUI.java,
+					
+						line 260<br/>In class com.grapeshot.halfnes.ui.SwingUI<br/>Field com.grapeshot.halfnes.ui.SwingUI.inFullScreen<br/>Synchronized 66% of the time<br/>Unsynchronized access at SwingUI.java:[line 260]<br/>Unsynchronized access at SwingUI.java:[line 553]<br/>Synchronized access at SwingUI.java:[line 363]<br/>Synchronized access at SwingUI.java:[line 369]<br/>Synchronized access at SwingUI.java:[line 385]<br/>Synchronized access at SwingUI.java:[line 434]</p>
+</td>
+</tr>
+</table>
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="Warnings_PERFORMANCE">Performance Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="2" cellpadding="5">
+<tr class="tableheader">
+<th align="left">Warning</th>
+<th align="left">Priority</th>
+<th align="left">Details</th>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#SS_SHOULD_BE_STATIC">Unread field: should this field be static?</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Unread field: com.grapeshot.halfnes.audio.MMC5SoundChip.ctrmode; should this field be static?<br/>
+<br/>
+<br/>In file MMC5SoundChip.java,
+					
+						line 180<br/>In class com.grapeshot.halfnes.audio.MMC5SoundChip<br/>Field com.grapeshot.halfnes.audio.MMC5SoundChip.ctrmode<br/>At MMC5SoundChip.java:[line 180]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#URF_UNREAD_FIELD">Unread field</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Unread field: com.grapeshot.halfnes.mappers.MMC5Mapper.wramWrite1<br/>
+<br/>
+<br/>In file MMC5Mapper.java,
+					
+						line 86<br/>In class com.grapeshot.halfnes.mappers.MMC5Mapper<br/>Field com.grapeshot.halfnes.mappers.MMC5Mapper.wramWrite1<br/>At MMC5Mapper.java:[line 86]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#URF_UNREAD_FIELD">Unread field</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Unread field: com.grapeshot.halfnes.mappers.MMC5Mapper.wramWrite2<br/>
+<br/>
+<br/>In file MMC5Mapper.java,
+					
+						line 90<br/>In class com.grapeshot.halfnes.mappers.MMC5Mapper<br/>Field com.grapeshot.halfnes.mappers.MMC5Mapper.wramWrite2<br/>At MMC5Mapper.java:[line 90]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#UUF_UNUSED_FIELD">Unused field</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Unused field: com.grapeshot.halfnes.mappers.MMC5Mapper.prgpage<br/>
+<br/>
+<br/>In file MMC5Mapper.java,
+					
+						lines 
+						    to <br/>In class com.grapeshot.halfnes.mappers.MMC5Mapper<br/>Field com.grapeshot.halfnes.mappers.MMC5Mapper.prgpage<br/>In MMC5Mapper.java</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#UUF_UNUSED_FIELD">Unused field</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Unused field: com.grapeshot.halfnes.ui.HeadlessUI.updateImage<br/>
+<br/>
+<br/>In file HeadlessUI.java,
+					
+						lines 
+						    to <br/>In class com.grapeshot.halfnes.ui.HeadlessUI<br/>Field com.grapeshot.halfnes.ui.HeadlessUI.updateImage<br/>In HeadlessUI.java</p>
+</td>
+</tr>
+</table>
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="Warnings_STYLE">Dodgy code Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="2" cellpadding="5">
+<tr class="tableheader">
+<th align="left">Warning</th>
+<th align="left">Priority</th>
+<th align="left">Details</th>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#DLS_DEAD_LOCAL_STORE">Dead store to local variable</a>
+</td>
+<td width="10%" valign="top">High</td>
+<td width="70%">
+<p>Dead store to bufferedImage in com.grapeshot.halfnes.HeadlessNES.main(String[])<br/>
+<br/>
+<br/>In file HeadlessNES.java,
+					
+						line 19<br/>In class com.grapeshot.halfnes.HeadlessNES<br/>In method com.grapeshot.halfnes.HeadlessNES.main(String[])<br/>Local variable named bufferedImage<br/>At HeadlessNES.java:[line 19]<br/>At HeadlessNES.java:[line 19]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#SA_FIELD_DOUBLE_ASSIGNMENT">Double assignment of field</a>
+</td>
+<td width="10%" valign="top">High</td>
+<td width="70%">
+<p>Double assignment of field FDSSoundChip.modTableAddr in com.grapeshot.halfnes.audio.FDSSoundChip.CalculateModulator()<br/>
+<br/>
+<br/>In file FDSSoundChip.java,
+					
+						line 134<br/>In class com.grapeshot.halfnes.audio.FDSSoundChip<br/>In method com.grapeshot.halfnes.audio.FDSSoundChip.CalculateModulator()<br/>Field com.grapeshot.halfnes.audio.FDSSoundChip.modTableAddr<br/>Did you mean to refer to the field com.grapeshot.halfnes.audio.FDSSoundChip.waveAddr?<br/>At FDSSoundChip.java:[line 134]<br/>At FDSSoundChip.java:[line 134]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#SA_FIELD_DOUBLE_ASSIGNMENT">Double assignment of field</a>
+</td>
+<td width="10%" valign="top">High</td>
+<td width="70%">
+<p>Double assignment of field NamcoMapper.soundAddr in com.grapeshot.halfnes.mappers.NamcoMapper.cartRead(int)<br/>
+<br/>
+<br/>In file NamcoMapper.java,
+					
+						line 48<br/>In class com.grapeshot.halfnes.mappers.NamcoMapper<br/>In method com.grapeshot.halfnes.mappers.NamcoMapper.cartRead(int)<br/>Field com.grapeshot.halfnes.mappers.NamcoMapper.soundAddr<br/>Did you mean to refer to the field com.grapeshot.halfnes.mappers.NamcoMapper.irqcounter?<br/>At NamcoMapper.java:[line 48]<br/>At NamcoMapper.java:[line 48]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#SA_FIELD_DOUBLE_ASSIGNMENT">Double assignment of field</a>
+</td>
+<td width="10%" valign="top">High</td>
+<td width="70%">
+<p>Double assignment of field NamcoMapper.soundAddr in com.grapeshot.halfnes.mappers.NamcoMapper.cartWrite(int, int)<br/>
+<br/>
+<br/>In file NamcoMapper.java,
+					
+						line 79<br/>In class com.grapeshot.halfnes.mappers.NamcoMapper<br/>In method com.grapeshot.halfnes.mappers.NamcoMapper.cartWrite(int, int)<br/>Field com.grapeshot.halfnes.mappers.NamcoMapper.soundAddr<br/>Did you mean to refer to the field com.grapeshot.halfnes.mappers.NamcoMapper.irqcounter?<br/>At NamcoMapper.java:[line 79]<br/>At NamcoMapper.java:[line 79]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">High</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &lt;= 16408 (0x4018) at this point<br/>
+<br/>
+<br/>In file CPURAM.java,
+					
+						line 56<br/>In class com.grapeshot.halfnes.CPURAM<br/>In method com.grapeshot.halfnes.CPURAM._read(int)<br/>Value addr &lt;= 16408 (0x4018)<br/>Unreachable code at CPURAM.java:[line 56]<br/>At CPURAM.java:[line 53]<br/>At CPURAM.java:[line 53]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">High</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 16384 (0x4000) at this point<br/>
+<br/>
+<br/>In file CPURAM.java,
+					
+						line 56<br/>In class com.grapeshot.halfnes.CPURAM<br/>In method com.grapeshot.halfnes.CPURAM._read(int)<br/>Value addr &gt;= 16384 (0x4000)<br/>Unreachable code at CPURAM.java:[line 56]<br/>At CPURAM.java:[line 53]<br/>At CPURAM.java:[line 53]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#NP_DEREFERENCE_OF_READLINE_VALUE">Dereference of the result of readLine() without nullcheck</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Dereference of the result of readLine() without nullcheck in com.grapeshot.halfnes.JInputHelper.isWindows10()<br/>
+<br/>
+<br/>In file JInputHelper.java,
+					
+						line 114<br/>In class com.grapeshot.halfnes.JInputHelper<br/>In method com.grapeshot.halfnes.JInputHelper.isWindows10()<br/>Value loaded from line<br/>At JInputHelper.java:[line 114]<br/>At JInputHelper.java:[line 114]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#SA_FIELD_DOUBLE_ASSIGNMENT">Double assignment of field</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Double assignment of field Namco163SoundChip.curch in com.grapeshot.halfnes.audio.Namco163SoundChip.clock(int)<br/>
+<br/>
+<br/>In file Namco163SoundChip.java,
+					
+						line 31<br/>In class com.grapeshot.halfnes.audio.Namco163SoundChip<br/>In method com.grapeshot.halfnes.audio.Namco163SoundChip.clock(int)<br/>Field com.grapeshot.halfnes.audio.Namco163SoundChip.curch<br/>Did you mean to refer to the field com.grapeshot.halfnes.audio.Namco163SoundChip.numch?<br/>At Namco163SoundChip.java:[line 31]<br/>At Namco163SoundChip.java:[line 31]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#SA_FIELD_DOUBLE_ASSIGNMENT">Double assignment of field</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Double assignment of field NSFMapper.n163soundAddr in com.grapeshot.halfnes.mappers.NSFMapper.cartRead(int)<br/>
+<br/>
+<br/>In file NSFMapper.java,
+					
+						line 301<br/>In class com.grapeshot.halfnes.mappers.NSFMapper<br/>In method com.grapeshot.halfnes.mappers.NSFMapper.cartRead(int)<br/>Field com.grapeshot.halfnes.mappers.NSFMapper.n163soundAddr<br/>At NSFMapper.java:[line 301]<br/>At NSFMapper.java:[line 301]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#SA_FIELD_DOUBLE_ASSIGNMENT">Double assignment of field</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Double assignment of field NSFMapper.n163soundAddr in com.grapeshot.halfnes.mappers.NSFMapper.cartWrite(int, int)<br/>
+<br/>
+<br/>In file NSFMapper.java,
+					
+						line 193<br/>In class com.grapeshot.halfnes.mappers.NSFMapper<br/>In method com.grapeshot.halfnes.mappers.NSFMapper.cartWrite(int, int)<br/>Field com.grapeshot.halfnes.mappers.NSFMapper.n163soundAddr<br/>At NSFMapper.java:[line 193]<br/>At NSFMapper.java:[line 193]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in com.grapeshot.halfnes.audio.VRC6SoundChip.write(int, int) where default case is missing<br/>
+<br/>
+<br/>In file VRC6SoundChip.java,
+					
+						lines 28
+						    to 63<br/>In class com.grapeshot.halfnes.audio.VRC6SoundChip<br/>In method com.grapeshot.halfnes.audio.VRC6SoundChip.write(int, int)<br/>At VRC6SoundChip.java:[lines 28-63]<br/>At VRC6SoundChip.java:[lines 28-63]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in com.grapeshot.halfnes.mappers.FME7Mapper.cartWrite(int, int) where default case is missing<br/>
+<br/>
+<br/>In file FME7Mapper.java,
+					
+						lines 110
+						    to 121<br/>In class com.grapeshot.halfnes.mappers.FME7Mapper<br/>In method com.grapeshot.halfnes.mappers.FME7Mapper.cartWrite(int, int)<br/>At FME7Mapper.java:[lines 110-121]<br/>At FME7Mapper.java:[lines 110-121]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in com.grapeshot.halfnes.mappers.Mapper182.cartWrite(int, int) where default case is missing<br/>
+<br/>
+<br/>In file Mapper182.java,
+					
+						lines 73
+						    to 106<br/>In class com.grapeshot.halfnes.mappers.Mapper182<br/>In method com.grapeshot.halfnes.mappers.Mapper182.cartWrite(int, int)<br/>At Mapper182.java:[lines 73-106]<br/>At Mapper182.java:[lines 73-106]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in com.grapeshot.halfnes.mappers.Mapper33.cartWrite(int, int) where default case is missing<br/>
+<br/>
+<br/>In file Mapper33.java,
+					
+						lines 32
+						    to 48<br/>In class com.grapeshot.halfnes.mappers.Mapper33<br/>In method com.grapeshot.halfnes.mappers.Mapper33.cartWrite(int, int)<br/>At Mapper33.java:[lines 32-48]<br/>At Mapper33.java:[lines 32-48]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in com.grapeshot.halfnes.mappers.Mapper48.cartWrite(int, int) where default case is missing<br/>
+<br/>
+<br/>In file Mapper48.java,
+					
+						lines 42
+						    to 57<br/>In class com.grapeshot.halfnes.mappers.Mapper48<br/>In method com.grapeshot.halfnes.mappers.Mapper48.cartWrite(int, int)<br/>At Mapper48.java:[lines 42-57]<br/>At Mapper48.java:[lines 42-57]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in com.grapeshot.halfnes.mappers.Mapper86.cartWrite(int, int) where default case is missing<br/>
+<br/>
+<br/>In file Mapper86.java,
+					
+						lines 36
+						    to 83<br/>In class com.grapeshot.halfnes.mappers.Mapper86<br/>In method com.grapeshot.halfnes.mappers.Mapper86.cartWrite(int, int)<br/>At Mapper86.java:[lines 36-83]<br/>At Mapper86.java:[lines 36-83]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in com.grapeshot.halfnes.mappers.Mapper97.cartWrite(int, int) where default case is missing<br/>
+<br/>
+<br/>In file Mapper97.java,
+					
+						lines 38
+						    to 49<br/>In class com.grapeshot.halfnes.mappers.Mapper97<br/>In method com.grapeshot.halfnes.mappers.Mapper97.cartWrite(int, int)<br/>At Mapper97.java:[lines 38-49]<br/>At Mapper97.java:[lines 38-49]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in com.grapeshot.halfnes.mappers.MMC2Mapper.ppuRead(int) where default case is missing<br/>
+<br/>
+<br/>In file MMC2Mapper.java,
+					
+						lines 69
+						    to 91<br/>In class com.grapeshot.halfnes.mappers.MMC2Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC2Mapper.ppuRead(int)<br/>At MMC2Mapper.java:[lines 69-91]<br/>At MMC2Mapper.java:[lines 69-91]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in com.grapeshot.halfnes.mappers.MMC4Mapper.ppuRead(int) where default case is missing<br/>
+<br/>
+<br/>In file MMC4Mapper.java,
+					
+						lines 60
+						    to 78<br/>In class com.grapeshot.halfnes.mappers.MMC4Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC4Mapper.ppuRead(int)<br/>At MMC4Mapper.java:[lines 60-78]<br/>At MMC4Mapper.java:[lines 60-78]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in new com.grapeshot.halfnes.mappers.NINA_003_006_Mapper(int) where default case is missing<br/>
+<br/>
+<br/>In file NINA_003_006_Mapper.java,
+					
+						lines 11
+						    to 17<br/>In class com.grapeshot.halfnes.mappers.NINA_003_006_Mapper<br/>In method new com.grapeshot.halfnes.mappers.NINA_003_006_Mapper(int)<br/>At NINA_003_006_Mapper.java:[lines 11-17]<br/>At NINA_003_006_Mapper.java:[lines 11-17]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in com.grapeshot.halfnes.mappers.Sunsoft03Mapper.cartWrite(int, int) where default case is missing<br/>
+<br/>
+<br/>In file Sunsoft03Mapper.java,
+					
+						lines 62
+						    to 73<br/>In class com.grapeshot.halfnes.mappers.Sunsoft03Mapper<br/>In method com.grapeshot.halfnes.mappers.Sunsoft03Mapper.cartWrite(int, int)<br/>At Sunsoft03Mapper.java:[lines 62-73]<br/>At Sunsoft03Mapper.java:[lines 62-73]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in com.grapeshot.halfnes.mappers.TengenRamboMapper.cartWrite(int, int) where default case is missing<br/>
+<br/>
+<br/>In file TengenRamboMapper.java,
+					
+						lines 61
+						    to 87<br/>In class com.grapeshot.halfnes.mappers.TengenRamboMapper<br/>In method com.grapeshot.halfnes.mappers.TengenRamboMapper.cartWrite(int, int)<br/>At TengenRamboMapper.java:[lines 61-87]<br/>At TengenRamboMapper.java:[lines 61-87]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in com.grapeshot.halfnes.mappers.VRC1Mapper.cartWrite(int, int) where default case is missing<br/>
+<br/>
+<br/>In file VRC1Mapper.java,
+					
+						lines 38
+						    to 63<br/>In class com.grapeshot.halfnes.mappers.VRC1Mapper<br/>In method com.grapeshot.halfnes.mappers.VRC1Mapper.cartWrite(int, int)<br/>At VRC1Mapper.java:[lines 38-63]<br/>At VRC1Mapper.java:[lines 38-63]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in com.grapeshot.halfnes.mappers.VRC2Mapper.cartWrite(int, int) where default case is missing<br/>
+<br/>
+<br/>In file VRC2Mapper.java,
+					
+						lines 42
+						    to 47<br/>In class com.grapeshot.halfnes.mappers.VRC2Mapper<br/>In method com.grapeshot.halfnes.mappers.VRC2Mapper.cartWrite(int, int)<br/>At VRC2Mapper.java:[lines 42-47]<br/>At VRC2Mapper.java:[lines 42-47]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in com.grapeshot.halfnes.mappers.VRC4Mapper.cartWrite(int, int) where default case is missing<br/>
+<br/>
+<br/>In file VRC4Mapper.java,
+					
+						lines 80
+						    to 85<br/>In class com.grapeshot.halfnes.mappers.VRC4Mapper<br/>In method com.grapeshot.halfnes.mappers.VRC4Mapper.cartWrite(int, int)<br/>At VRC4Mapper.java:[lines 80-85]<br/>At VRC4Mapper.java:[lines 80-85]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in com.grapeshot.halfnes.mappers.VRC6Mapper.cartWrite(int, int) where default case is missing<br/>
+<br/>
+<br/>In file VRC6Mapper.java,
+					
+						lines 79
+						    to 90<br/>In class com.grapeshot.halfnes.mappers.VRC6Mapper<br/>In method com.grapeshot.halfnes.mappers.VRC6Mapper.cartWrite(int, int)<br/>At VRC6Mapper.java:[lines 79-90]<br/>At VRC6Mapper.java:[lines 79-90]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Switch statement found in com.grapeshot.halfnes.mappers.VRC7Mapper.cartWrite(int, int) where default case is missing<br/>
+<br/>
+<br/>In file VRC7Mapper.java,
+					
+						lines 98
+						    to 109<br/>In class com.grapeshot.halfnes.mappers.VRC7Mapper<br/>In method com.grapeshot.halfnes.mappers.VRC7Mapper.cartWrite(int, int)<br/>At VRC7Mapper.java:[lines 98-109]<br/>At VRC7Mapper.java:[lines 98-109]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 16384 (0x4000) at this point<br/>
+<br/>
+<br/>In file CPURAM.java,
+					
+						line 71<br/>In class com.grapeshot.halfnes.CPURAM<br/>In method com.grapeshot.halfnes.CPURAM.write(int, int)<br/>Value addr &gt;= 16384 (0x4000)<br/>At CPURAM.java:[line 71]<br/>At CPURAM.java:[line 71]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 40960 (0xa000) at this point<br/>
+<br/>
+<br/>In file Mapper182.java,
+					
+						line 47<br/>In class com.grapeshot.halfnes.mappers.Mapper182<br/>In method com.grapeshot.halfnes.mappers.Mapper182.cartWrite(int, int)<br/>Value addr &gt;= 40960 (0xa000)<br/>At Mapper182.java:[line 47]<br/>At Mapper182.java:[line 47]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 49152 (0xc000) at this point<br/>
+<br/>
+<br/>In file Mapper182.java,
+					
+						line 50<br/>In class com.grapeshot.halfnes.mappers.Mapper182<br/>In method com.grapeshot.halfnes.mappers.Mapper182.cartWrite(int, int)<br/>Value addr &gt;= 49152 (0xc000)<br/>At Mapper182.java:[line 50]<br/>At Mapper182.java:[line 50]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 57344 (0xe000) at this point<br/>
+<br/>
+<br/>In file Mapper182.java,
+					
+						line 54<br/>In class com.grapeshot.halfnes.mappers.Mapper182<br/>In method com.grapeshot.halfnes.mappers.Mapper182.cartWrite(int, int)<br/>Value addr &gt;= 57344 (0xe000)<br/>At Mapper182.java:[line 54]<br/>At Mapper182.java:[line 54]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 49152 (0xc000) at this point<br/>
+<br/>
+<br/>In file Mapper212.java,
+					
+						line 32<br/>In class com.grapeshot.halfnes.mappers.Mapper212<br/>In method com.grapeshot.halfnes.mappers.Mapper212.cartWrite(int, int)<br/>Value addr &gt;= 49152 (0xc000)<br/>At Mapper212.java:[line 32]<br/>At Mapper212.java:[line 32]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 40960 (0xa000) at this point<br/>
+<br/>
+<br/>In file MMC1Mapper.java,
+					
+						line 84<br/>In class com.grapeshot.halfnes.mappers.MMC1Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC1Mapper.cartWrite(int, int)<br/>Value addr &gt;= 40960 (0xa000)<br/>At MMC1Mapper.java:[line 84]<br/>At MMC1Mapper.java:[line 84]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 49152 (0xc000) at this point<br/>
+<br/>
+<br/>In file MMC1Mapper.java,
+					
+						line 93<br/>In class com.grapeshot.halfnes.mappers.MMC1Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC1Mapper.cartWrite(int, int)<br/>Value addr &gt;= 49152 (0xc000)<br/>At MMC1Mapper.java:[line 93]<br/>At MMC1Mapper.java:[line 93]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 57344 (0xe000) at this point<br/>
+<br/>
+<br/>In file MMC1Mapper.java,
+					
+						line 99<br/>In class com.grapeshot.halfnes.mappers.MMC1Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC1Mapper.cartWrite(int, int)<br/>Value addr &gt;= 57344 (0xe000)<br/>At MMC1Mapper.java:[line 99]<br/>At MMC1Mapper.java:[line 99]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 40960 (0xa000) at this point<br/>
+<br/>
+<br/>In file MMC3Mapper.java,
+					
+						line 67<br/>In class com.grapeshot.halfnes.mappers.MMC3Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC3Mapper.cartWrite(int, int)<br/>Value addr &gt;= 40960 (0xa000)<br/>At MMC3Mapper.java:[line 67]<br/>At MMC3Mapper.java:[line 67]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 49152 (0xc000) at this point<br/>
+<br/>
+<br/>In file MMC3Mapper.java,
+					
+						line 70<br/>In class com.grapeshot.halfnes.mappers.MMC3Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC3Mapper.cartWrite(int, int)<br/>Value addr &gt;= 49152 (0xc000)<br/>At MMC3Mapper.java:[line 70]<br/>At MMC3Mapper.java:[line 70]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 57344 (0xe000) at this point<br/>
+<br/>
+<br/>In file MMC3Mapper.java,
+					
+						line 73<br/>In class com.grapeshot.halfnes.mappers.MMC3Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC3Mapper.cartWrite(int, int)<br/>Value addr &gt;= 57344 (0xe000)<br/>At MMC3Mapper.java:[line 73]<br/>At MMC3Mapper.java:[line 73]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 45056 (0xb000) at this point<br/>
+<br/>
+<br/>In file MMC4Mapper.java,
+					
+						line 37<br/>In class com.grapeshot.halfnes.mappers.MMC4Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC4Mapper.cartWrite(int, int)<br/>Value addr &gt;= 45056 (0xb000)<br/>At MMC4Mapper.java:[line 37]<br/>At MMC4Mapper.java:[line 37]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 49152 (0xc000) at this point<br/>
+<br/>
+<br/>In file MMC4Mapper.java,
+					
+						line 40<br/>In class com.grapeshot.halfnes.mappers.MMC4Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC4Mapper.cartWrite(int, int)<br/>Value addr &gt;= 49152 (0xc000)<br/>At MMC4Mapper.java:[line 40]<br/>At MMC4Mapper.java:[line 40]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 53248 (0xd000) at this point<br/>
+<br/>
+<br/>In file MMC4Mapper.java,
+					
+						line 43<br/>In class com.grapeshot.halfnes.mappers.MMC4Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC4Mapper.cartWrite(int, int)<br/>Value addr &gt;= 53248 (0xd000)<br/>At MMC4Mapper.java:[line 43]<br/>At MMC4Mapper.java:[line 43]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 57344 (0xe000) at this point<br/>
+<br/>
+<br/>In file MMC4Mapper.java,
+					
+						line 46<br/>In class com.grapeshot.halfnes.mappers.MMC4Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC4Mapper.cartWrite(int, int)<br/>Value addr &gt;= 57344 (0xe000)<br/>At MMC4Mapper.java:[line 46]<br/>At MMC4Mapper.java:[line 46]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 61440 (0xf000) at this point<br/>
+<br/>
+<br/>In file MMC4Mapper.java,
+					
+						line 49<br/>In class com.grapeshot.halfnes.mappers.MMC4Mapper<br/>In method com.grapeshot.halfnes.mappers.MMC4Mapper.cartWrite(int, int)<br/>Value addr &gt;= 61440 (0xf000)<br/>At MMC4Mapper.java:[line 49]<br/>At MMC4Mapper.java:[line 49]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 40960 (0xa000) at this point<br/>
+<br/>
+<br/>In file TengenRamboMapper.java,
+					
+						line 90<br/>In class com.grapeshot.halfnes.mappers.TengenRamboMapper<br/>In method com.grapeshot.halfnes.mappers.TengenRamboMapper.cartWrite(int, int)<br/>Value addr &gt;= 40960 (0xa000)<br/>At TengenRamboMapper.java:[line 90]<br/>At TengenRamboMapper.java:[line 90]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 49152 (0xc000) at this point<br/>
+<br/>
+<br/>In file TengenRamboMapper.java,
+					
+						line 93<br/>In class com.grapeshot.halfnes.mappers.TengenRamboMapper<br/>In method com.grapeshot.halfnes.mappers.TengenRamboMapper.cartWrite(int, int)<br/>Value addr &gt;= 49152 (0xc000)<br/>At TengenRamboMapper.java:[line 93]<br/>At TengenRamboMapper.java:[line 93]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#UC_USELESS_CONDITION">Condition has no effect</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Useless condition: it's known that addr &gt;= 57344 (0xe000) at this point<br/>
+<br/>
+<br/>In file TengenRamboMapper.java,
+					
+						line 97<br/>In class com.grapeshot.halfnes.mappers.TengenRamboMapper<br/>In method com.grapeshot.halfnes.mappers.TengenRamboMapper.cartWrite(int, int)<br/>Value addr &gt;= 57344 (0xe000)<br/>At TengenRamboMapper.java:[line 97]<br/>At TengenRamboMapper.java:[line 97]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD">Unread public/protected field</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Unread public/protected field: com.grapeshot.halfnes.mappers.Mapper.submapper<br/>
+<br/>
+<br/>In file Mapper.java,
+					
+						line 76<br/>In class com.grapeshot.halfnes.mappers.Mapper<br/>Field com.grapeshot.halfnes.mappers.Mapper.submapper<br/>At Mapper.java:[line 76]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#UUF_UNUSED_PUBLIC_OR_PROTECTED_FIELD">Unused public or protected field</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Unused public or protected field: com.grapeshot.halfnes.mappers.Mapper31.nsfBanking<br/>
+<br/>
+<br/>In file Mapper31.java,
+					
+						lines 
+						    to <br/>In class com.grapeshot.halfnes.mappers.Mapper31<br/>Field com.grapeshot.halfnes.mappers.Mapper31.nsfBanking<br/>In Mapper31.java</p>
+</td>
+</tr>
+</table>
+<p>
+<br/>
+<br/>
+</p>
+<p>
+<br/>
+<br/>
+</p>
+<h1>
+<a name="Details">Warning Types</a>
+</h1>
+<h2>
+<a name="BSHIFT_WRONG_ADD_PRIORITY">Possible bad parsing of shift operation</a>
+</h2>
+
+<p>
+The code performs an operation like (x &lt;&lt; 8 + y). Although this might be correct, probably it was meant 
+to perform (x &lt;&lt; 8) + y, but shift operation has
+a lower precedence, so it's actually parsed as x &lt;&lt; (8 + y).
+</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="DLS_DEAD_LOCAL_STORE">Dead store to local variable</a>
+</h2>
+
+<p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+</p>
+<p>
+Note that Sun's javac compiler often generates dead stores for
+final local variables.  Because FindBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="EI_EXPOSE_REP2">May expose internal representation by incorporating reference to mutable object</a>
+</h2>
+
+  <p> This code stores a reference to an externally mutable object into the
+  internal representation of the object.&nbsp;
+   If instances
+   are accessed by untrusted code, and unchecked changes to
+   the mutable object would compromise security or other
+   important properties, you will need to do something different.
+  Storing a copy of the object is better approach in many situations.</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="IS2_INCONSISTENT_SYNC">Inconsistent synchronization</a>
+</h2>
+
+  <p> The fields of this class appear to be accessed inconsistently with respect
+  to synchronization.&nbsp; This bug report indicates that the bug pattern detector
+  judged that
+  </p>
+  <ul>
+  <li> The class contains a mix of locked and unlocked accesses,</li>
+  <li> The class is <b>not</b> annotated as javax.annotation.concurrent.NotThreadSafe,</li>
+  <li> At least one locked access was performed by one of the class's own methods, and</li>
+  <li> The number of unsynchronized field accesses (reads and writes) was no more than
+       one third of all accesses, with writes being weighed twice as high as reads</li>
+  </ul>
+
+  <p> A typical bug matching this bug pattern is forgetting to synchronize
+  one of the methods in a class that is intended to be thread-safe.</p>
+
+  <p> You can select the nodes labeled "Unsynchronized access" to show the
+  code locations where the detector believed that a field was accessed
+  without synchronization.</p>
+
+  <p> Note that there are various sources of inaccuracy in this detector;
+  for example, the detector cannot statically detect all situations in which
+  a lock is held.&nbsp; Also, even when the detector is accurate in
+  distinguishing locked vs. unlocked accesses, the code in question may still
+  be correct.</p>
+
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="MS_MUTABLE_ARRAY">Field is a mutable array</a>
+</h2>
+
+<p> A final static field references an array
+   and can be accessed by malicious code or
+        by accident from another package.
+   This code can freely modify the contents of the array.</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="MS_PKGPROTECT">Field should be package protected</a>
+</h2>
+
+  <p> A mutable static field could be changed by malicious code or
+   by accident.
+   The field could be made package protected to avoid
+   this vulnerability.</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="NM_CLASS_NAMING_CONVENTION">Class names should start with an upper case letter</a>
+</h2>
+
+  <p> Class names should be nouns, in mixed case with the first letter of each internal word capitalized. Try to keep your class names simple and descriptive. Use whole words-avoid acronyms and abbreviations (unless the abbreviation is much more widely used than the long form, such as URL or HTML).
+</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="NP_DEREFERENCE_OF_READLINE_VALUE">Dereference of the result of readLine() without nullcheck</a>
+</h2>
+
+  <p> The result of invoking readLine() is dereferenced without checking to see if the result is null. If there are no more lines of text
+to read, readLine() will return null and dereferencing that will generate a null pointer exception.
+</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="OBL_UNSATISFIED_OBLIGATION">Method may fail to clean up stream or resource</a>
+</h2>
+          
+          <p>
+          This method may fail to clean up (close, dispose of) a stream,
+          database object, or other
+          resource requiring an explicit cleanup operation.
+          </p>
+
+          <p>
+          In general, if a method opens a stream or other resource,
+          the method should use a try/finally block to ensure that
+          the stream or resource is cleaned up before the method
+          returns.
+          </p>
+
+          <p>
+          This bug pattern is essentially the same as the
+          OS_OPEN_STREAM and ODR_OPEN_DATABASE_RESOURCE
+          bug patterns, but is based on a different
+          (and hopefully better) static analysis technique.
+          We are interested is getting feedback about the
+          usefulness of this bug pattern.
+          To send feedback, either:
+          </p>
+          <ul>
+            <li>send email to findbugs@cs.umd.edu</li>
+            <li>file a bug report: <a href="http://findbugs.sourceforge.net/reportingBugs.html">http://findbugs.sourceforge.net/reportingBugs.html</a></li>
+          </ul>
+
+          <p>
+          In particular,
+          the false-positive suppression heuristics for this
+          bug pattern have not been extensively tuned, so
+          reports about false positives are helpful to us.
+          </p>
+
+          <p>
+          See Weimer and Necula, <i>Finding and Preventing Run-Time Error Handling Mistakes</i>, for
+          a description of the analysis technique.
+          </p>
+          
+      
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">Method may fail to clean up stream or resource on checked exception</a>
+</h2>
+          
+          <p>
+          This method may fail to clean up (close, dispose of) a stream,
+          database object, or other
+          resource requiring an explicit cleanup operation.
+          </p>
+
+          <p>
+          In general, if a method opens a stream or other resource,
+          the method should use a try/finally block to ensure that
+          the stream or resource is cleaned up before the method
+          returns.
+          </p>
+
+          <p>
+          This bug pattern is essentially the same as the
+          OS_OPEN_STREAM and ODR_OPEN_DATABASE_RESOURCE
+          bug patterns, but is based on a different
+          (and hopefully better) static analysis technique.
+          We are interested is getting feedback about the
+          usefulness of this bug pattern.
+          To send feedback, either:
+          </p>
+          <ul>
+            <li>send email to findbugs@cs.umd.edu</li>
+            <li>file a bug report: <a href="http://findbugs.sourceforge.net/reportingBugs.html">http://findbugs.sourceforge.net/reportingBugs.html</a></li>
+          </ul>
+
+          <p>
+          In particular,
+          the false-positive suppression heuristics for this
+          bug pattern have not been extensively tuned, so
+          reports about false positives are helpful to us.
+          </p>
+
+          <p>
+          See Weimer and Necula, <i>Finding and Preventing Run-Time Error Handling Mistakes</i>, for
+          a description of the analysis technique.
+          </p>
+          
+      
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="OS_OPEN_STREAM">Method may fail to close stream</a>
+</h2>
+
+<p> The method creates an IO stream object, does not assign it to any
+fields, pass it to other methods that might close it,
+or return it, and does not appear to close
+the stream on all paths out of the method.&nbsp; This may result in
+a file descriptor leak.&nbsp; It is generally a good
+idea to use a <code>finally</code> block to ensure that streams are
+closed.</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">Method ignores exceptional return value</a>
+</h2>
+
+   <p> This method returns a value that is not checked. The return value should be checked
+since it can indicate an unusual or unexpected function execution. For
+example, the <code>File.delete()</code> method returns false
+if the file could not be successfully deleted (rather than
+throwing an Exception).
+If you don't check the result, you won't notice if the method invocation
+signals unexpected behavior by returning an atypical return value.
+</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="SA_FIELD_DOUBLE_ASSIGNMENT">Double assignment of field</a>
+</h2>
+
+<p> This method contains a double assignment of a field; e.g.
+</p>
+<pre>
+  int x,y;
+  public void foo() {
+    x = x = 17;
+  }
+</pre>
+<p>Assigning to a field twice is useless, and may indicate a logic error or typo.</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="SE_BAD_FIELD_STORE">Non-serializable value stored into instance field of a serializable class</a>
+</h2>
+
+<p> A non-serializable value is stored into a non-transient field
+of a serializable class.</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="SF_SWITCH_NO_DEFAULT">Switch statement found where default case is missing</a>
+</h2>
+
+  <p> This method contains a switch statement where default case is missing.
+  Usually you need to provide a default case.</p>
+  <p>Because the analysis only looks at the generated bytecode, this warning can be incorrect triggered if
+the default case is at the end of the switch statement and the switch statement doesn't contain break statements for other
+cases.
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="SS_SHOULD_BE_STATIC">Unread field: should this field be static?</a>
+</h2>
+
+  <p> This class contains an instance final field that
+   is initialized to a compile-time static value.
+   Consider making the field static.</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="UC_USELESS_CONDITION">Condition has no effect</a>
+</h2>
+
+<p>This condition always produces the same result as the value of the involved variable was narrowed before. 
+Probably something else was meant or condition can be removed.</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="URF_UNREAD_FIELD">Unread field</a>
+</h2>
+
+  <p> This field is never read.&nbsp; Consider removing it from the class.</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD">Unread public/protected field</a>
+</h2>
+
+  <p> This field is never read.&nbsp;
+The field is public or protected, so perhaps
+    it is intended to be used with classes not seen as part of the analysis. If not,
+consider removing it from the class.</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="UUF_UNUSED_FIELD">Unused field</a>
+</h2>
+
+  <p> This field is never used.&nbsp; Consider removing it from the class.</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="UUF_UNUSED_PUBLIC_OR_PROTECTED_FIELD">Unused public or protected field</a>
+</h2>
+
+  <p> This field is never used.&nbsp;
+The field is public or protected, so perhaps
+    it is intended to be used with classes not seen as part of the analysis. If not,
+consider removing it from the class.</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+</body>
+</html>
