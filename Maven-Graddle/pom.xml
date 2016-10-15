@@ -8,12 +8,33 @@
     <artifactId>maven-app</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <tomcat.server>TomcatServer</tomcat.server>
+        <tomcat.path>hw</tomcat.path>
+    </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.1.RELEASE</version>
+        <relativePath/>
+    </parent>
+
     <modules>
         <module>dao</module>
         <module>business</module>
         <module>cli</module>
         <module>web</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>1.4.1.RELEASE</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
