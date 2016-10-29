@@ -43,23 +43,20 @@ public class Unit {
 
         Unit unit = (Unit) o;
 
-        if (id != null ? !id.equals(unit.id) : unit.id != null) return false;
-        return employees != null ? employees.equals(unit.employees) : unit.employees == null;
+        return id != null ? id.equals(unit.id) : unit.id == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (employees != null ? employees.hashCode() : 0);
-        return result;
+        return id != null ? id.hashCode() : 0;
     }
 
     @Override
     public String toString() {
         return "Unit{" +
                 "id=" + id +
-                ", employees=" + employees +
+                ", employees.size=" + (employees != null ? employees.size() : null) +
                 '}';
     }
 }

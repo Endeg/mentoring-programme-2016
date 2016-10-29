@@ -5,6 +5,7 @@ import com.epam.mentoring.data.Project;
 import com.epam.mentoring.data.Unit;
 import com.epam.mentoring.repository.EmployeeRepository;
 import com.epam.mentoring.repository.ProjectRepository;
+import com.epam.mentoring.repository.UnitRepository;
 import com.epam.mentoring.service.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,11 +26,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
     private final ProjectRepository projectRepository;
+    private final UnitRepository unitRepository;
 
     @Autowired
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, ProjectRepository projectRepository) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, ProjectRepository projectRepository, UnitRepository unitRepository) {
         this.employeeRepository = employeeRepository;
         this.projectRepository = projectRepository;
+        this.unitRepository = unitRepository;
     }
 
     @Override
@@ -69,5 +72,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         employeeRepository.save(employee);
         LOG.info("update() - end.");
+    }
+
+    @Override
+    public void addToUnit(Employee employee, Integer unitId) {
+        LOG.info("addToUnit() - start: employee = {}, unitId = {}", employee, unitId);
+        final Unit unit = unitRepository.findOne(unitId);
+        if (unit.getEmployees() == null) {
+            unit.setEmployees(new HashSet<>());
+        }
+
+        unit.getEmployees().add(employee);
+
+        unitRepository.save(unit);
+        LOG.info("addToUnit() - unit = {}" + unit);
     }
 }

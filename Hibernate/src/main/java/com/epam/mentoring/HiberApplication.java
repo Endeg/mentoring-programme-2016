@@ -22,8 +22,19 @@ public class HiberApplication {
 
         createProjectUnitEmployeeThenDeleteHim(projectRepository, unitRepository, employeeService);
         createThenUpdateEmployeeWithOtherProjectAndUnit(projectRepository, unitRepository, employeeService);
+        addEmployeeToUnit(projectRepository, unitRepository, employeeService);
+
 
         context.close();
+    }
+
+    private static void addEmployeeToUnit(ProjectRepository projectRepository, UnitRepository unitRepository, EmployeeService employeeService) {
+        final Project projectOne = projectRepository.save(new Project());
+        final Unit unitOne = unitRepository.save(new Unit());
+        final Unit unitTwo = unitRepository.save(new Unit());
+
+        final Employee employeeOne = employeeService.create(unitOne, projectOne);
+        employeeService.addToUnit(employeeOne, unitTwo.getId());
     }
 
     private static void createThenUpdateEmployeeWithOtherProjectAndUnit(ProjectRepository projectRepository, UnitRepository unitRepository, EmployeeService employeeService) {
