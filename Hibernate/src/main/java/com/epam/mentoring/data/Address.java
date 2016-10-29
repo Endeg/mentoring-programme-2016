@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
  * Created by Endeg on 29.10.2016.
  */
 @Embeddable
-public class Address extends Basic {
+public class Address {
 
     private String street;
 
@@ -21,8 +21,7 @@ public class Address extends Basic {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Address)) return false;
-        if (!super.equals(o)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Address address = (Address) o;
 
@@ -32,8 +31,6 @@ public class Address extends Basic {
 
     @Override
     public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + (street != null ? street.hashCode() : 0);
-        return result;
+        return street != null ? street.hashCode() : 0;
     }
 }

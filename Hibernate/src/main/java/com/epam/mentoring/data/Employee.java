@@ -3,8 +3,9 @@ package com.epam.mentoring.data;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.util.Set;
 
@@ -12,7 +13,10 @@ import java.util.Set;
  * Created by Endeg on 29.10.2016.
  */
 @Entity
-public class Employee extends Basic {
+public class Employee {
+
+    @Id
+    private Integer id;
 
     @Enumerated
     private EmployeeStatus status;
@@ -26,17 +30,65 @@ public class Employee extends Basic {
     @ManyToMany
     private Set<Project> projects;
 
-    @OneToMany
+    @ManyToOne
     private Unit unit;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public EmployeeStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(EmployeeStatus status) {
+        this.status = status;
+    }
+
+    public Personal getPersonal() {
+        return personal;
+    }
+
+    public void setPersonal(Personal personal) {
+        this.personal = personal;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Set<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
+    }
+
+    public Unit getUnit() {
+        return unit;
+    }
+
+    public void setUnit(Unit unit) {
+        this.unit = unit;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Employee)) return false;
-        if (!super.equals(o)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Employee employee = (Employee) o;
 
+        if (id != null ? !id.equals(employee.id) : employee.id != null) return false;
         if (status != employee.status) return false;
         if (personal != null ? !personal.equals(employee.personal) : employee.personal != null) return false;
         if (address != null ? !address.equals(employee.address) : employee.address != null) return false;
@@ -47,7 +99,7 @@ public class Employee extends Basic {
 
     @Override
     public int hashCode() {
-        int result = super.hashCode();
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (status != null ? status.hashCode() : 0);
         result = 31 * result + (personal != null ? personal.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
