@@ -3,6 +3,7 @@ package com.epam.mentoring.data;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -16,6 +17,7 @@ import java.util.Set;
 public class Employee {
 
     @Id
+    @GeneratedValue
     private Integer id;
 
     @Enumerated
@@ -106,5 +108,17 @@ public class Employee {
         result = 31 * result + (projects != null ? projects.hashCode() : 0);
         result = 31 * result + (unit != null ? unit.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", status=" + status +
+                ", personal=" + personal +
+                ", address=" + address +
+                ", projects=" + projects +
+                ", unit=" + unit +
+                '}';
     }
 }

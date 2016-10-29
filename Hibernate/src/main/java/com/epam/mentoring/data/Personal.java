@@ -50,4 +50,12 @@ public class Personal {
         result = 31 * result + (secrets != null ? secrets.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Personal{" +
+                "id=" + id +
+                ", secrets='" + secrets + '\'' +
+                '}';
+    }
 }
