@@ -85,6 +85,21 @@ public class EmployeeServiceImpl implements EmployeeService {
         unit.getEmployees().add(employee);
 
         unitRepository.save(unit);
-        LOG.info("addToUnit() - unit = {}" + unit);
+        LOG.info("addToUnit() - unit = {}", unit);
+    }
+
+    @Override
+    public void assignForProject(Employee employee, Integer projectId) {
+        LOG.info("assignForProject() - start: employee = {}, projectId = {}", employee, projectId);
+        final Project project = projectRepository.findOne(projectId);
+        if (project.getEmployees() == null) {
+            project.setEmployees(new HashSet<>());
+        }
+
+        project.getEmployees().add(employee);
+
+        projectRepository.save(project);
+        LOG.info("assignForProject() - project = {}", project);
+
     }
 }

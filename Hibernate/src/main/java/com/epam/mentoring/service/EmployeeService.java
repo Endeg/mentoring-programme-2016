@@ -18,4 +18,6 @@ public interface EmployeeService {
     void update(Employee employee, Unit unit, Integer projectId);
 
     void addToUnit(Employee employee, Integer unitId);
+
+    void assignForProject(Employee employee, Integer projectId);
 }
