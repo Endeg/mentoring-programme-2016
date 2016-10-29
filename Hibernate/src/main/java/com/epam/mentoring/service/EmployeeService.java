@@ -15,6 +15,6 @@ public interface EmployeeService {
 
     void delete(Unit unit, Integer projectId);
 
-    void update(Unit unit, Integer projectId);
+    void update(Employee employee, Unit unit, Integer projectId);
 
 }
