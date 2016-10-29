@@ -1,6 +1,7 @@
 package com.epam.mentoring.data;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 public class Personal {
 
     @Id
+    @GeneratedValue
     private Integer id;
 
     private String secrets;

@@ -1,6 +1,7 @@
 package com.epam.mentoring.data;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.util.Set;
@@ -12,6 +13,7 @@ import java.util.Set;
 public class Project {
 
     @Id
+    @GeneratedValue
     private Integer id;
 
     @ManyToMany
@@ -51,5 +53,13 @@ public class Project {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (employees != null ? employees.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", employees=" + employees +
+                '}';
     }
 }
