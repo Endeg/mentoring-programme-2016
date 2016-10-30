@@ -30,7 +30,6 @@ public class ItemsController {
     @GetMapping
     public ModelAndView items() {
         Map<String, Object> model = new HashMap<>();
-        model.put("title", "Items");
         model.put("itemsCollection", ItemsContainer.ITEMS);
         model.put("basket", basket);
         return new ModelAndView("items", model);
@@ -44,7 +43,6 @@ public class ItemsController {
         }
 
         Map<String, Object> model = new HashMap<>();
-        model.put("title", "Items");
         model.put("itemsCollection", ItemsContainer.ITEMS);
         model.put("basket", basket);
         return new ModelAndView("items", model);
