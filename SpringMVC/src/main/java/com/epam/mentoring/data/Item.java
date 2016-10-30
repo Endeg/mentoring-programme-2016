@@ -5,19 +5,19 @@ package com.epam.mentoring.data;
  */
 public class Item {
 
-    private Integer id;
+    private int id;
     private String name;
 
-    public Item(Integer id, String name) {
+    public Item(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -36,14 +36,14 @@ public class Item {
 
         Item item = (Item) o;
 
-        if (id != null ? !id.equals(item.id) : item.id != null) return false;
+        if (id != item.id) return false;
         return name != null ? name.equals(item.name) : item.name == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }

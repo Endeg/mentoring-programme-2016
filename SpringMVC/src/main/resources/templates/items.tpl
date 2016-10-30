@@ -6,6 +6,7 @@ html {
         div(class: 'container') {
             h1(title)
             div {
+                h2("Shop")
                 table {
                     tbody {
                         itemsCollection.each { item ->
@@ -21,6 +22,7 @@ html {
                         }
                     }
                 }
+                h2("Basket contains $basket.items.size items")
             }
         }
     }
