@@ -38,13 +38,13 @@ public class ItemsController {
     @GetMapping("item/{itemId}")
     public ModelAndView items(@PathVariable int itemId) {
         Map<String, Object> model = new HashMap<>();
-        model.put("itemObject", getItem(itemId));
+        model.put("itemObject", ItemsContainer.getItem(itemId));
         return new ModelAndView("item", model);
     }
 
     @GetMapping("add/{itemId}")
     public ModelAndView addItemToBasket(@PathVariable int itemId) {
-        Item itemForBasket = getItem(itemId);
+        Item itemForBasket = ItemsContainer.getItem(itemId);
         if (itemForBasket != null) {
             basket.getItems().add(itemForBasket);
         }
@@ -55,12 +55,4 @@ public class ItemsController {
         return new ModelAndView("items", model);
     }
 
-    private Item getItem(@PathVariable int itemId) {
-        for (Item item : ItemsContainer.ITEMS) {
-            if (item.getId() == itemId) {
-                return item;
-            }
-        }
-        return null;
-    }
 }

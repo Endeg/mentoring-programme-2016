@@ -7,7 +7,7 @@ layout 'main.tpl', title: 'Basket', content: contents {
                         td item.id
                         td item.name
                         td {
-                            a(href: "/remove/${item.id}") {
+                            a(href: "/basket/remove/${item.id}") {
                                 yield "Remove"
                             }
                         }
