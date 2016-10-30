@@ -12,6 +12,11 @@ layout 'main.tpl', title: 'Items', content: contents {
                                 yield "Add"
                             }
                         }
+                        td {
+                            a(href: "/item/${item.id}") {
+                                yield "View"
+                            }
+                        }
                     }
                 }
             }

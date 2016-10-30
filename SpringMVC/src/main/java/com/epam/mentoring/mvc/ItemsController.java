@@ -35,6 +35,13 @@ public class ItemsController {
         return new ModelAndView("items", model);
     }
 
+    @GetMapping("item/{itemId}")
+    public ModelAndView items(@PathVariable int itemId) {
+        Map<String, Object> model = new HashMap<>();
+        model.put("itemObject", getItem(itemId));
+        return new ModelAndView("item", model);
+    }
+
     @GetMapping("add/{itemId}")
     public ModelAndView addItemToBasket(@PathVariable int itemId) {
         Item itemForBasket = getItem(itemId);
