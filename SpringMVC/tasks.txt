@@ -1,0 +1,10 @@
+
+
+Create web application using Spring MVC.
+
+    It should be simple online shop.(any stuff) 
+    Should have at least 3 pages (UI no matter): Item list, item detail, shopping cart(can be stored in session)
+    Spring should be configured using Java Config
+    Data can be static. Any source which will be simplier for implementation.
+    *Log every request to server without code duplication
+
