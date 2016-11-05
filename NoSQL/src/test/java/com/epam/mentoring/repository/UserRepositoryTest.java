@@ -1,13 +1,19 @@
 package com.epam.mentoring.repository;
 
+import com.epam.mentoring.data.Message;
 import com.epam.mentoring.data.User;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
+import java.util.Random;
 import java.util.UUID;
 
 import static org.hamcrest.Matchers.is;
@@ -21,9 +27,11 @@ import static org.junit.Assert.assertThat;
 @SpringBootTest
 public class UserRepositoryTest {
 
+    private final Random rnd = new Random();
     @Autowired
     private UserRepository userRepository;
 
+    @Ignore
     @Test
     public void shouldCreateSomeUserAndFindIt() {
         //GIVEN
@@ -37,6 +45,38 @@ public class UserRepositoryTest {
         //THEN
         assertThat(foundUsers, hasSize(1));
         assertThat(foundUsers.iterator().next(), is(user));
+    }
+
+    @Ignore
+    @Test
+    public void shouldRemoveAllEntries() {
+        userRepository.delete(userRepository.findAll());
+    }
+
+    @Test
+    public void shouldPopulateDatabaseWithLotsOfData() {
+        shouldRemoveAllEntries();
+
+        for (int i = 0; i < 1000; i++) {
+            final User user = new User(UUID.randomUUID().toString(), "Name" + rnd.nextInt(), "LastName" + rnd.nextInt());
+            user.messages = new ArrayList<>();
+            for (int j = 0; j < 1000; j++) {
+
+                Date date = randomDay();
+
+                user.messages.add(new Message(date, "Title" + rnd.nextInt(), "Contents" + rnd.nextInt()));
+            }
+
+            userRepository.save(user);
+        }
+    }
+
+    private Date randomDay() {
+        final Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, rnd.nextInt(36) + 1980);
+        cal.set(Calendar.MONTH, rnd.nextInt(12));
+        cal.set(Calendar.DAY_OF_MONTH, rnd.nextInt(27) + 1);
+        return cal.getTime();
     }
 
 }

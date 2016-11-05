@@ -3,14 +3,14 @@ package com.epam.mentoring.repository;
 import com.epam.mentoring.data.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Endeg on 05.11.2016.
  */
 public interface UserRepository extends MongoRepository<User, String> {
 
-    Collection<User> findByFirstName(String firstName);
+    List<User> findByFirstName(String firstName);
 
-    Collection<User> findByLastName(String lastName);
+    List<User> findByLastName(String lastName);
 }
