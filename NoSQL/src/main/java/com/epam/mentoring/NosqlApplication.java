@@ -1,7 +1,7 @@
 package com.epam.mentoring;
 
 import com.epam.mentoring.data.User;
-import com.epam.mentoring.data.aggr.Simple;
+import com.epam.mentoring.data.aggr.AverageNumberOfMessagesByDay;
 import com.epam.mentoring.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +15,7 @@ import org.springframework.data.mongodb.core.aggregation.TypedAggregation;
 
 import java.util.List;
 
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.limit;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.group;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.project;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.unwind;
 
@@ -43,17 +43,13 @@ public class NosqlApplication {
         final MongoTemplate mongoTemplate = context.getBean(MongoTemplate.class);
         final TypedAggregation<User> aggregation = Aggregation.newAggregation(User.class,
                 unwind("messages"),
-                project("id", "messages.date").andExpression("dayOfWeek(messages.date)").as("day"),
-                limit(7));
+                project("id").andExpression("dayOfWeek(messages.date)").as("day"),
+                group("id", "day").count().as("total"),
+                group("day").avg("total").as("avgMsgCount"));
 
-        final AggregationResults<Simple> aggregated = mongoTemplate.aggregate(aggregation, Simple.class);
-        for (Simple aggr : aggregated) {
-            LOG.info("Average: {}", aggr);
+        final AggregationResults<AverageNumberOfMessagesByDay> aggregated = mongoTemplate.aggregate(aggregation, AverageNumberOfMessagesByDay.class);
+        for (AverageNumberOfMessagesByDay aggr : aggregated) {
+            LOG.info("Day of week {} - average number of messages = {}", aggr.id, aggr.avgMsgCount);
         }
-
-//        final AggregationResults<AverageNumberOfMessagesByDay> aggregated = mongoTemplate.aggregate(aggregation, AverageNumberOfMessagesByDay.class);
-//        for (AverageNumberOfMessagesByDay aggr : aggregated) {
-//            LOG.info("Average: {}", aggr);
-//        }
     }
 }

@@ -57,10 +57,10 @@ public class UserRepositoryTest {
     public void shouldPopulateDatabaseWithLotsOfData() {
         shouldRemoveAllEntries();
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 1000 + rnd.nextInt(500); i++) {
             final User user = new User(UUID.randomUUID().toString(), "Name" + rnd.nextInt(), "LastName" + rnd.nextInt());
             user.messages = new ArrayList<>();
-            for (int j = 0; j < 1000; j++) {
+            for (int j = 0; j < 1000 + rnd.nextInt(500); j++) {
 
                 Date date = randomDay();
 
