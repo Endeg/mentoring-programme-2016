@@ -5,3 +5,5 @@ storage/
 *.ipr
 *.iws
 *.iml
+
+*.zip
