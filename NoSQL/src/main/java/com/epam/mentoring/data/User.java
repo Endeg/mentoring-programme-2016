@@ -20,6 +20,8 @@ public class User {
 
     public List<FriendRequest> friendRequests;
 
+    public int moviesWatched;
+
     public User() {
     }
 
@@ -37,6 +39,7 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", messages=" + messages +
                 ", friendRequests=" + friendRequests +
+                ", moviesWatched=" + moviesWatched +
                 '}';
     }
 }

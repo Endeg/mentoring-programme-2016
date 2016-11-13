@@ -80,7 +80,9 @@ public class UserRepositoryTest {
 
             }
 
-            for (int j = 0; j < 50 + rnd.nextInt(100); j++) {
+            user.moviesWatched = rnd.nextInt(500);
+
+            for (int j = 0; j < 90 + rnd.nextInt(100); j++) {
                 final FriendRequest friendRequest = friendRequestReposiotry.save(
                         new FriendRequest(UUID.randomUUID().toString(), "Name" + rnd.nextInt(), randomDay()));
                 if (user.friendRequests == null) {
