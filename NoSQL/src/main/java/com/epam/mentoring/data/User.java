@@ -18,6 +18,8 @@ public class User {
 
     public List<Message> messages;
 
+    public List<FriendRequest> friendRequests;
+
     public User() {
     }
 
@@ -34,6 +36,7 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", messages=" + messages +
+                ", friendRequests=" + friendRequests +
                 '}';
     }
 }

@@ -1,10 +1,13 @@
 package com.epam.mentoring.repository;
 
+import com.epam.mentoring.data.FriendRequest;
 import com.epam.mentoring.data.Message;
 import com.epam.mentoring.data.User;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -27,9 +30,15 @@ import static org.junit.Assert.assertThat;
 @SpringBootTest
 public class UserRepositoryTest {
 
+    private static final Logger LOG = LoggerFactory.getLogger(UserRepositoryTest.class);
+
     private final Random rnd = new Random();
+
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private FriendRequestReposiotry friendRequestReposiotry;
 
     @Ignore
     @Test
@@ -50,7 +59,10 @@ public class UserRepositoryTest {
     @Ignore
     @Test
     public void shouldRemoveAllEntries() {
+        LOG.info("Removing all collections...");
         userRepository.delete(userRepository.findAll());
+        friendRequestReposiotry.delete(friendRequestReposiotry.findAll());
+        LOG.info("Done.");
     }
 
     @Test
@@ -65,6 +77,13 @@ public class UserRepositoryTest {
                 Date date = randomDay();
 
                 user.messages.add(new Message(date, "Title" + rnd.nextInt(), "Contents" + rnd.nextInt()));
+
+                final FriendRequest friendRequest = friendRequestReposiotry.save(
+                        new FriendRequest(UUID.randomUUID().toString(), "Name" + rnd.nextInt(), randomDay()));
+                if (user.friendRequests == null) {
+                    user.friendRequests = new ArrayList<>();
+                }
+                user.friendRequests.add(friendRequest);
             }
 
             userRepository.save(user);
