@@ -1,7 +1,9 @@
 package com.epam.mentoring;
 
+import com.epam.mentoring.data.FriendRequest;
 import com.epam.mentoring.data.User;
 import com.epam.mentoring.data.aggr.AverageNumberOfMessagesByDay;
+import com.epam.mentoring.data.aggr.FriendshipPerMonth;
 import com.epam.mentoring.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,8 +37,23 @@ public class NosqlApplication {
 //        }
 
         showMessagesByDayOfTheWeek(context);
+        showMaxNumberOfFriendshipsFromMonthToMonth(context);
 
         context.close();
+    }
+
+    private static void showMaxNumberOfFriendshipsFromMonthToMonth(ConfigurableApplicationContext context) {
+        final MongoTemplate mongoTemplate = context.getBean(MongoTemplate.class);
+
+        final TypedAggregation<FriendRequest> aggregation = Aggregation.newAggregation(FriendRequest.class,
+                project("id").andExpression("month(requestDate)").as("month").andExpression("year(requestDate)").as("year"),
+                group("year", "month").count().as("requestCount"));
+
+        final AggregationResults<FriendshipPerMonth> aggregated = mongoTemplate.aggregate(aggregation, FriendshipPerMonth.class);
+
+        for (FriendshipPerMonth aggr : aggregated) {
+            LOG.info("Friendship per month: {}", aggr);
+        }
     }
 
     private static void showMessagesByDayOfTheWeek(ConfigurableApplicationContext context) {

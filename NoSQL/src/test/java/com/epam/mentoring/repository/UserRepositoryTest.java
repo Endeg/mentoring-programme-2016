@@ -78,6 +78,9 @@ public class UserRepositoryTest {
 
                 user.messages.add(new Message(date, "Title" + rnd.nextInt(), "Contents" + rnd.nextInt()));
 
+            }
+
+            for (int j = 0; j < 50 + rnd.nextInt(100); j++) {
                 final FriendRequest friendRequest = friendRequestReposiotry.save(
                         new FriendRequest(UUID.randomUUID().toString(), "Name" + rnd.nextInt(), randomDay()));
                 if (user.friendRequests == null) {
