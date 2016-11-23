@@ -1,5 +1,8 @@
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -33,38 +36,26 @@ public class CopyDatabase {
     public static void main(String[] args) throws ClassNotFoundException {
         Class.forName(JDBC_DRIVER);
         try (Connection conn = DriverManager.getConnection(DB_URL, Props.get("USER"), Props.get("PASS"))) {
-            getTableTypes(conn);
-
-            getSchemas(conn);
-
-            System.out.println("getCatalogs(conn) = " + getCatalogs(conn));
-
-            try (final ResultSet tablesRs = conn.getMetaData().getTables(null, Props.get("SCHEMA"), null, new String[]{"TABLE"})) {
-                final List<Map<String, Object>> tableNames = extractResultSet(tablesRs);
-                System.out.println("tableNames = " + tableNames);
+            for (String tableName : getTables(conn, Props.get("SCHEMA"))) {
+                System.out.println(tableName);
             }
-
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private static List<Map<String, Object>> getCatalogs(Connection conn) throws SQLException {
-        try (final ResultSet catalogsRs = conn.getMetaData().getCatalogs()) {
-            return extractResultSet(catalogsRs);
-        }
-    }
-
-    private static List<Map<String, Object>> getSchemas(Connection conn) throws SQLException {
-        try (final ResultSet schemasRs = conn.getMetaData().getSchemas()) {
-            return extractResultSet(schemasRs);
-        }
-    }
-
-    private static List<Map<String, Object>> getTableTypes(Connection conn) throws SQLException {
-        try (final ResultSet tableTypesRs = conn.getMetaData().getTableTypes()) {
-            return extractResultSet(tableTypesRs);
+    private static List<String> getTables(Connection conn, String schema) throws SQLException {
+        try (final ResultSet tablesRs = conn.getMetaData().getTables(null, schema, null, new String[]{"TABLE"})) {
+            final List<Map<String, Object>> tableNames = extractResultSet(tablesRs);
+            final List<String> sortedTableNames = Ordering.natural().sortedCopy(Iterables.transform(tableNames,
+                    new Function<Map<String, Object>, String>() {
+                        @Override
+                        public String apply(Map<String, Object> stringObjectMap) {
+                            return stringObjectMap.get("TABLE_NAME").toString();
+                        }
+                    }));
+            return sortedTableNames;
         }
     }
 }
