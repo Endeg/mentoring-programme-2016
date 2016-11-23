@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 
@@ -37,7 +38,20 @@ public class CopyDatabase {
         Class.forName(JDBC_DRIVER);
         try (Connection conn = DriverManager.getConnection(DB_URL, Props.get("USER"), Props.get("PASS"))) {
             for (String tableName : getTables(conn, Props.get("SCHEMA"))) {
-                System.out.println(tableName);
+                System.out.println(tableName + " ----------------------");
+
+                final String sql = "select * from " + tableName;
+
+                try (final Statement statement = conn.createStatement()) {
+                    if (statement.execute(sql)) {
+                        try (final ResultSet rs = statement.getResultSet()) {
+                            final List<Map<String, Object>> rows = extractResultSet(rs);
+                            for (Map<String, Object> row : rows) {
+                                System.out.println(row.toString());
+                            }
+                        }
+                    }
+                }
             }
 
         } catch (SQLException e) {
