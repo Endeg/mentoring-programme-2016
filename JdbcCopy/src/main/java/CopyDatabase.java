@@ -2,7 +2,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 
 import java.io.File;
@@ -27,20 +26,6 @@ public class CopyDatabase {
     static final String JDBC_DRIVER = Props.get("JDBC_DRIVER");
     static final String DB_URL = Props.get("DB_URL");
 
-    private static List<Map<String, Object>> extractResultSet(ResultSet rs) throws SQLException {
-        final List<Map<String, Object>> rows = Lists.newArrayList();
-        while (rs.next()) {
-            final Map<String, Object> row = Maps.newHashMap();
-            for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-                final String columnName = rs.getMetaData().getColumnName(i);
-                final Object value = rs.getObject(i);
-                row.put(columnName, value);
-            }
-            rows.add(row);
-        }
-        return rows;
-    }
-
     public static void main(String[] args) throws ClassNotFoundException {
         Class.forName(JDBC_DRIVER);
         final File file = new File("output.txt");
@@ -56,21 +41,28 @@ public class CopyDatabase {
                     if (statement.execute(sql)) {
                         boolean headerPresent = false;
                         try (final ResultSet rs = statement.getResultSet()) {
-                            final List<Map<String, Object>> rows = extractResultSet(rs);
+                            final Iterable<Map<String, Object>> rows = new ResultSetIterator(rs);
 
-                            System.out.println("Writing table " + tableName + " (" + rows.size() + " elements)...");
-
+                            System.out.println("Writing table " + tableName + "...");
+                            int count = 0;
                             for (Map<String, Object> row : rows) {
                                 final Iterable<String> keys = sortedKeys(row);
 
                                 if (!headerPresent) {
-                                    writer.write(Joiner.on('\t').join(keys));
+                                    final String header = Joiner.on('\t').join(keys);
+                                    writer.write(header);
                                     writer.write('\n');
                                     headerPresent = true;
                                 }
 
-                                writer.write(Joiner.on('\t').join(orderedByKeyValues(row, keys)));
+                                final String rowString = Joiner.on('\t').join(orderedByKeyValues(row, keys));
+                                writer.write(rowString);
                                 writer.write('\n');
+
+                                count++;
+                                if (count % 500000 == 0) {
+                                    System.out.println(count + " elements...");
+                                }
                             }
                         }
                     }
@@ -97,8 +89,7 @@ public class CopyDatabase {
 
     private static List<String> getTables(Connection conn, String schema) throws SQLException {
         try (final ResultSet tablesRs = conn.getMetaData().getTables(null, schema, null, new String[]{"TABLE"})) {
-            final List<Map<String, Object>> tableNames = extractResultSet(tablesRs);
-            final List<String> sortedTableNames = Ordering.natural().sortedCopy(Iterables.transform(tableNames,
+            final List<String> sortedTableNames = Ordering.natural().sortedCopy(Iterables.transform(new ResultSetIterator(tablesRs),
                     new Function<Map<String, Object>, String>() {
                         @Override
                         public String apply(Map<String, Object> stringObjectMap) {
