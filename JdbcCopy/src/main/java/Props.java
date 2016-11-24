@@ -11,8 +11,11 @@ public final class Props {
 
     static {
         properties = new Properties();
-        final InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("db.properties");
         try {
+            final InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("db.properties");
+            if (inputStream == null) {
+                throw new IOException("db.properties is missing!");
+            }
             properties.load(inputStream);
             System.out.println(properties);
         } catch (IOException e) {
