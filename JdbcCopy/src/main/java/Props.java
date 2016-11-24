@@ -17,7 +17,6 @@ public final class Props {
                 throw new IOException("db.properties is missing!");
             }
             properties.load(inputStream);
-            System.out.println(properties);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

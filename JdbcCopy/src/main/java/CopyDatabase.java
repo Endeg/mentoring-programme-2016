@@ -1,9 +1,16 @@
 import com.google.common.base.Function;
+import com.google.common.base.Joiner;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -36,27 +43,56 @@ public class CopyDatabase {
 
     public static void main(String[] args) throws ClassNotFoundException {
         Class.forName(JDBC_DRIVER);
-        try (Connection conn = DriverManager.getConnection(DB_URL, Props.get("USER"), Props.get("PASS"))) {
+        final File file = new File("output.txt");
+        try (final Connection conn = DriverManager.getConnection(DB_URL, Props.get("USER"), Props.get("PASS"));
+             final OutputStream fos = new FileOutputStream(file);
+             final Writer writer = new OutputStreamWriter(fos)) {
             for (String tableName : getTables(conn, Props.get("SCHEMA"))) {
-                System.out.println(tableName + " ----------------------");
+                writer.write(tableName + ":\n");
 
                 final String sql = "select * from " + tableName;
 
                 try (final Statement statement = conn.createStatement()) {
                     if (statement.execute(sql)) {
+                        boolean headerPresent = false;
                         try (final ResultSet rs = statement.getResultSet()) {
                             final List<Map<String, Object>> rows = extractResultSet(rs);
+
+                            System.out.println("Writing table " + tableName + " (" + rows.size() + " elements)...");
+
                             for (Map<String, Object> row : rows) {
-                                System.out.println(row.toString());
+                                final Iterable<String> keys = sortedKeys(row);
+
+                                if (!headerPresent) {
+                                    writer.write(Joiner.on('\t').join(keys));
+                                    writer.write('\n');
+                                    headerPresent = true;
+                                }
+
+                                writer.write(Joiner.on('\t').join(orderedByKeyValues(row, keys)));
+                                writer.write('\n');
                             }
                         }
                     }
                 }
-            }
 
-        } catch (SQLException e) {
+                writer.flush();
+            }
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private static Iterable<String> sortedKeys(Map<String, ?> row) {
+        return Ordering.natural().sortedCopy(row.keySet());
+    }
+
+    private static Iterable<String> orderedByKeyValues(Map<String, Object> row, Iterable<String> keys) {
+        final List<String> orderedValues = Lists.newArrayList();
+        for (String key : keys) {
+            orderedValues.add("\"" + row.get(key) + "\"");
+        }
+        return orderedValues;
     }
 
     private static List<String> getTables(Connection conn, String schema) throws SQLException {
